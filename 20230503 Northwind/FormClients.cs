@@ -40,32 +40,43 @@ namespace _20230503_Northwind
                 MessageBox.Show("El cliente no existe");
                 this.btAlta.Visible = true;
                 this.btCancelar.Visible = true;
+                this.lcCompanyia2.Visible = true;
+                this.textBoxCompany.Visible= true;
             }
             else
             {
                 this.textBoxCustomer.Text = ds.Customers[0].CompanyName;
+                this.lbclient.Visible = false;
+                this.LbCompanyia.Visible = true;
                 this.textBoxNombre.Text = ds.Customers[0].ContactName;
                 this.textBoxDireccion.Text = ds.Customers[0].Address;
                 this.textBoxCiudad.Text = ds.Customers[0].City;
                 this.textBoxPais.Text = ds.Customers[0].Country;
-
             }
-
         }
         private void FormClients_Load(object sender, EventArgs e)
         {
             this.btAlta.Visible = false;
-            this.btCancelar.Visible = false;
+            this.btCancelar.Visible = false;            
+            this.LbCompanyia.Visible = false;
+            this.textBoxCompany.Visible = false;
+            this.LbCompanyia.Visible = false;
+            this.lcCompanyia2.Visible = false;
         }
         private void btAlta_Click(object sender, EventArgs e)
         {
             try
             {
+                this.textBoxCompany.Visible = true;
+                this.LbCompanyia.Visible=true;
+
                 int nRows;
                 if (!this.textBoxCustomer.Text.Equals("") && !this.textBoxNombre.Text.Equals(""))
                 {
-                    string query = "INSERT INTO customers (CustomerID, ContactName, Address, City, Country) VALUES ";
-                    query += "('" + this.textBoxCustomer.Text + "', '" + this.textBoxNombre.Text + "', '" + this.textBoxDireccion.Text + "', '" + this.textBoxCiudad.Text + "', '" + this.textBoxPais.Text + "');";
+                    string query = "INSERT INTO customers (CustomerID, ContactName, Address, City, Country, CompanyName) VALUES ";
+                    query += "('" + this.textBoxCustomer.Text + "', '" + this.textBoxNombre.Text + "', '" +
+                          this.textBoxDireccion.Text + "', '" + this.textBoxCiudad.Text + "', '" +
+                          this.textBoxPais.Text + "','" + this.textBoxCompany.Text + "');";
 
                     SqlCommand command = new SqlCommand(query, conection);
                     nRows = command.ExecuteNonQuery();
@@ -73,6 +84,21 @@ namespace _20230503_Northwind
                     {
                         MessageBox.Show("Se ha grabado correctamente");
                     }
+                    this.textBoxCustomer.Text = "";
+                    this.textBoxNombre.Text = "";
+                    this.textBoxDireccion.Text = "";
+                    this.textBoxCiudad.Text = "";
+                    this.textBoxPais.Text = "";
+                    this.lbclient.Visible = true;
+                    this.LbCompanyia.Visible = false;
+                    this.lcCompanyia2.Visible = false;
+                    this.textBoxCompany.Visible = false;
+
+                }
+                else if (this.textBoxCustomer.Text.Equals("") || this.textBoxNombre.Text.Equals("")
+                         || this.textBoxCompany.Text.Equals(""))
+                {
+                    MessageBox.Show("Els camps -ClientId, Nom i Companyia- són obligatoris");
                 }
             }
             catch (Exception ex)
@@ -92,6 +118,8 @@ namespace _20230503_Northwind
             this.textBoxDireccion.Text = "";
             this.textBoxCiudad.Text = "";
             this.textBoxPais.Text = "";
+            this.lbclient.Visible = true;
+            this.LbCompanyia.Visible = false;
 
         }
     }

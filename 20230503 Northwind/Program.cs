@@ -25,7 +25,7 @@ namespace _20230503_Northwind
             SqlConnection conexion = new SqlConnection(conexionBaseDatos);
             conexion.Open();
 
-            Application.Run(new FormClients(conexion));
+            Application.Run(new FormProductes(conexion));
         }
     }
 }

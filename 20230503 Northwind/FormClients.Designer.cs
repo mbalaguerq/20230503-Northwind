@@ -42,6 +42,9 @@
             this.btAlta = new System.Windows.Forms.Button();
             this.btCancelar = new System.Windows.Forms.Button();
             this.btEsborrar = new System.Windows.Forms.Button();
+            this.LbCompanyia = new System.Windows.Forms.Label();
+            this.textBoxCompany = new System.Windows.Forms.TextBox();
+            this.lcCompanyia2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxCustomer
@@ -168,11 +171,41 @@
             this.btEsborrar.UseVisualStyleBackColor = true;
             this.btEsborrar.Click += new System.EventHandler(this.btEsborrar_Click);
             // 
+            // LbCompanyia
+            // 
+            this.LbCompanyia.AutoSize = true;
+            this.LbCompanyia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LbCompanyia.Location = new System.Drawing.Point(54, 80);
+            this.LbCompanyia.Name = "LbCompanyia";
+            this.LbCompanyia.Size = new System.Drawing.Size(79, 16);
+            this.LbCompanyia.TabIndex = 14;
+            this.LbCompanyia.Text = "Companyia:";
+            // 
+            // textBoxCompany
+            // 
+            this.textBoxCompany.Location = new System.Drawing.Point(139, 320);
+            this.textBoxCompany.Name = "textBoxCompany";
+            this.textBoxCompany.Size = new System.Drawing.Size(248, 20);
+            this.textBoxCompany.TabIndex = 15;
+            // 
+            // lcCompanyia2
+            // 
+            this.lcCompanyia2.AutoSize = true;
+            this.lcCompanyia2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lcCompanyia2.Location = new System.Drawing.Point(54, 320);
+            this.lcCompanyia2.Name = "lcCompanyia2";
+            this.lcCompanyia2.Size = new System.Drawing.Size(79, 16);
+            this.lcCompanyia2.TabIndex = 16;
+            this.lcCompanyia2.Text = "Companyia:";
+            // 
             // FormClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lcCompanyia2);
+            this.Controls.Add(this.textBoxCompany);
+            this.Controls.Add(this.LbCompanyia);
             this.Controls.Add(this.btEsborrar);
             this.Controls.Add(this.btCancelar);
             this.Controls.Add(this.btAlta);
@@ -211,5 +244,8 @@
         private System.Windows.Forms.Button btAlta;
         private System.Windows.Forms.Button btCancelar;
         private System.Windows.Forms.Button btEsborrar;
+        private System.Windows.Forms.Label LbCompanyia;
+        private System.Windows.Forms.TextBox textBoxCompany;
+        private System.Windows.Forms.Label lcCompanyia2;
     }
 }
