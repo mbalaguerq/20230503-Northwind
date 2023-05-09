@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _20230503_Northwind.Controlador;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -15,17 +16,19 @@ namespace _20230503_Northwind
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
-//Creem un string per connectar a BBDD (nom cadena de conexió a servidor)
+            //Creem un string per connectar a BBDD (nom cadena de conexió a servidor)
             string conexionBaseDatos = "Data Source=DESKTOP-N4T4UJL\\SQLEXPRESS;Initial Catalog=Northwind;Integrated Security=True";
-           
-            //instrucció per conectar a BBDD
+            
             SqlConnection conexion = new SqlConnection(conexionBaseDatos);
             conexion.Open();
 
-            Application.Run(new FormProductes(conexion));
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            ProgramaController controller = new ProgramaController(conexion);
+
+            //instrucció per conectar a BBDD            
+            //Application.Run(new ProgramaController(conexion));
         }
     }
 }

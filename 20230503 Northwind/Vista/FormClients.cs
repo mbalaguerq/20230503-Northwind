@@ -32,7 +32,7 @@ namespace _20230503_Northwind
             //creació del data adapter per obtenir dades(es el que executa la instrucció anterior)
             SqlDataAdapter adaptador = new SqlDataAdapter(comando);//tengo los datos aqui BBDD
 
-            DSNorthwind ds = new DSNorthwind();
+            Model.DSNorthwind ds = new Model.DSNorthwind();
             adaptador.Fill(ds.Customers);//los paso aquí
 
             if (ds.Customers.Rows.Count == 0)

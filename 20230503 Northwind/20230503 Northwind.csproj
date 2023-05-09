@@ -49,38 +49,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DSNorthwind.Designer.cs">
+    <Compile Include="Controlador\ClientController.cs" />
+    <Compile Include="Controlador\ProgramaController.cs" />
+    <Compile Include="Controlador\ProducteController.cs" />
+    <Compile Include="Model\DSNorthwind.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DSNorthwind.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Vista\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Vista\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormClients.cs">
+    <Compile Include="Vista\FormClients.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormClients.Designer.cs">
+    <Compile Include="Vista\FormClients.Designer.cs">
       <DependentUpon>FormClients.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormProductes.cs">
+    <Compile Include="Vista\FormProductes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormProductes.Designer.cs">
+    <Compile Include="Vista\FormProductes.Designer.cs">
       <DependentUpon>FormProductes.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <Compile Include="Vista\MenuView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\MenuView.Designer.cs">
+      <DependentUpon>MenuView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Vista\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormClients.resx">
+    <EmbeddedResource Include="Vista\FormClients.resx">
       <DependentUpon>FormClients.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormProductes.resx">
+    <EmbeddedResource Include="Vista\FormProductes.resx">
       <DependentUpon>FormProductes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -91,16 +100,20 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="DSNorthwind.xsc">
+    <EmbeddedResource Include="Vista\MenuView.resx">
+      <DependentUpon>MenuView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Model\DSNorthwind.xsc">
       <DependentUpon>DSNorthwind.xsd</DependentUpon>
     </None>
-    <None Include="DSNorthwind.xsd">
+    <None Include="Model\DSNorthwind.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DSNorthwind.Designer.cs</LastGenOutput>
     </None>
-    <None Include="DSNorthwind.xss">
+    <None Include="Model\DSNorthwind.xss">
       <DependentUpon>DSNorthwind.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -116,6 +129,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\northwind logo.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

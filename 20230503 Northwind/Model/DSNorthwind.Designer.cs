@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace _20230503_Northwind {
+namespace _20230503_Northwind.Model {
     
     
     /// <summary>
@@ -3676,7 +3676,7 @@ namespace _20230503_Northwind {
         }
     }
 }
-namespace _20230503_Northwind.DSNorthwindTableAdapters {
+namespace _20230503_Northwind.Model.DSNorthwindTableAdapters {
     
     
     /// <summary>
