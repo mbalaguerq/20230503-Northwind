@@ -1,4 +1,6 @@
-﻿using System;
+﻿using _20230503_Northwind.Controlador;
+using _20230503_Northwind.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,28 +14,24 @@ using System.Windows.Forms;
 namespace _20230503_Northwind
 {
     public partial class FormClients : Form
-    {        
+    {
         SqlConnection conection;
-        public FormClients(SqlConnection pconection)
+        ClientController clientController;
+        DSNorthwind ds;
+        int opcio;
+        public FormClients(SqlConnection pconection, Object pclientController, DSNorthwind pds, int popcio)
         {
             InitializeComponent();
+            ds = pds;
             conection = pconection;
+            clientController = (ClientController)pclientController;
+            opcio = popcio;
         }
         private void btconsultar_Click(object sender, EventArgs e)
-        {            
-            //instrucción que ejecutará el programa
-            string clientes = "select * from customers where CustomerID='" + this.textBoxCustomer.Text + "';";
-            //aq this va entre cometes xq recull un string com fariem en un select
-            //select * from customers where customerID='Madrid';
+        {
+            string cli = this.textBoxCustomer.Text;
 
-            //creació del comando per ejecutar la consulta
-            SqlCommand comando = new SqlCommand(clientes, conection);
-
-            //creació del data adapter per obtenir dades(es el que executa la instrucció anterior)
-            SqlDataAdapter adaptador = new SqlDataAdapter(comando);//tengo los datos aqui BBDD
-
-            Model.DSNorthwind ds = new Model.DSNorthwind();
-            adaptador.Fill(ds.Customers);//los paso aquí
+            ds = clientController.consultaClients(cli);
 
             if (ds.Customers.Rows.Count == 0)
             {
@@ -41,45 +39,91 @@ namespace _20230503_Northwind
                 this.btAlta.Visible = true;
                 this.btCancelar.Visible = true;
                 this.lcCompanyia2.Visible = true;
-                this.textBoxCompany.Visible= true;
+                this.textBoxCompany.Visible = true;
             }
             else
             {
-                this.textBoxCustomer.Text = ds.Customers[0].CompanyName;
-                this.lbclient.Visible = false;
+                this.textBoxCustomer.Text = ds.Customers[0].CustomerID;                
+                this.lbclient.Visible = true;
                 this.LbCompanyia.Visible = true;
                 this.textBoxNombre.Text = ds.Customers[0].ContactName;
                 this.textBoxDireccion.Text = ds.Customers[0].Address;
                 this.textBoxCiudad.Text = ds.Customers[0].City;
                 this.textBoxPais.Text = ds.Customers[0].Country;
+                this.btModificarCli.Visible = true;
+                this.btEliminarCli.Visible = true;                
+                this.textBoxCompany.Visible = true;
+                this.textBoxCompany.Text = ds.Customers[0].CompanyName;
             }
+            ds.Customers.Clear();
         }
         private void FormClients_Load(object sender, EventArgs e)
         {
-            this.btAlta.Visible = false;
-            this.btCancelar.Visible = false;            
-            this.LbCompanyia.Visible = false;
-            this.textBoxCompany.Visible = false;
-            this.LbCompanyia.Visible = false;
-            this.lcCompanyia2.Visible = false;
+            if (opcio == 1)
+            {
+                this.btAlta.Visible = false;
+                this.btCancelar.Visible = true;
+                this.LbCompanyia.Visible = false;
+                this.textBoxCompany.Visible = false;
+                this.LbCompanyia.Visible = false;
+                this.lcCompanyia2.Visible = false;
+                this.btEliminarCli.Visible = false;
+                this.btModificarCli.Visible = false;
+            }
+            if (opcio == 2)
+            {
+                this.textBoxCompany.Visible = true;
+                this.LbCompanyia.Visible = true;
+                this.btconsultar.Visible = false;
+                this.btEsborrar.Visible = false;
+                this.btEliminarCli.Visible = false;
+                this.btModificarCli.Visible = false;
+                this.btCancelar.Visible = true;
+            }
+            if (opcio == 3)
+            {
+                this.textBoxCompany.Visible = false;
+                this.LbCompanyia.Visible = false;
+                this.lcCompanyia2.Visible = false;
+                this.btconsultar.Visible = true;
+                this.btEsborrar.Visible = true;
+                this.btEliminarCli.Visible = true;
+                this.btModificarCli.Visible = false;
+                this.btAlta.Visible = false;
+                this.btCancelar.Visible = true;
+            }
+            if(opcio ==4)
+            {
+                this.textBoxCompany.Visible = false;
+                this.LbCompanyia.Visible = false;
+                this.lcCompanyia2.Visible = false;
+                this.btconsultar.Visible = true;
+                this.btEsborrar.Visible = true;
+                this.btEliminarCli.Visible = false;
+                this.btModificarCli.Visible = true;
+                this.btAlta.Visible = false;
+                this.btCancelar.Visible = true;
+            }
         }
         private void btAlta_Click(object sender, EventArgs e)
         {
             try
             {
                 this.textBoxCompany.Visible = true;
-                this.LbCompanyia.Visible=true;
+                this.LbCompanyia.Visible = true;
 
                 int nRows;
                 if (!this.textBoxCustomer.Text.Equals("") && !this.textBoxNombre.Text.Equals(""))
                 {
-                    string query = "INSERT INTO customers (CustomerID, ContactName, Address, City, Country, CompanyName) VALUES ";
-                    query += "('" + this.textBoxCustomer.Text + "', '" + this.textBoxNombre.Text + "', '" +
-                          this.textBoxDireccion.Text + "', '" + this.textBoxCiudad.Text + "', '" +
-                          this.textBoxPais.Text + "','" + this.textBoxCompany.Text + "');";
+                    string customer = this.textBoxCustomer.Text;
+                    string nombre = this.textBoxNombre.Text;
+                    string direccion = this.textBoxDireccion.Text;
+                    string ciudad = this.textBoxCiudad.Text;
+                    string company = this.textBoxCompany.Text;
+                    string pais = this.textBoxPais.Text;
 
-                    SqlCommand command = new SqlCommand(query, conection);
-                    nRows = command.ExecuteNonQuery();
+                    nRows = clientController.altaClient(customer, nombre, direccion, ciudad, pais, company);
+
                     if (nRows > 0)
                     {
                         MessageBox.Show("Se ha grabado correctamente");
@@ -93,7 +137,6 @@ namespace _20230503_Northwind
                     this.LbCompanyia.Visible = false;
                     this.lcCompanyia2.Visible = false;
                     this.textBoxCompany.Visible = false;
-
                 }
                 else if (this.textBoxCustomer.Text.Equals("") || this.textBoxNombre.Text.Equals("")
                          || this.textBoxCompany.Text.Equals(""))
@@ -104,11 +147,49 @@ namespace _20230503_Northwind
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-
             }
 
             this.btAlta.Visible = false;
             this.btCancelar.Visible = false;
+        }
+        private void btEliminarCli_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.textBoxCompany.Visible = true;
+                this.LbCompanyia.Visible = true;
+
+                int nRows;
+                if (!this.textBoxCustomer.Text.Equals("") && !this.textBoxNombre.Text.Equals(""))
+                {
+                    string customer = this.textBoxCustomer.Text;                    
+
+                    nRows = clientController.eliminaClient(customer);
+
+                    if (nRows > 0)
+                    {
+                        MessageBox.Show("S'ha eliminat el client correctament");
+                    }
+                    this.textBoxCustomer.Text = "";
+                    this.textBoxNombre.Text = "";
+                    this.textBoxDireccion.Text = "";
+                    this.textBoxCiudad.Text = "";
+                    this.textBoxPais.Text = "";
+                    this.lbclient.Visible = true;
+                    this.LbCompanyia.Visible = false;
+                    this.lcCompanyia2.Visible = false;
+                    this.textBoxCompany.Visible = false;
+                }
+                else if (this.textBoxCustomer.Text.Equals("") || this.textBoxNombre.Text.Equals("")
+                         || this.textBoxCompany.Text.Equals(""))
+                {
+                    MessageBox.Show("Els camps -ClientId, Nom i Companyia- són obligatoris");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btEsborrar_Click(object sender, EventArgs e)
@@ -122,5 +203,17 @@ namespace _20230503_Northwind
             this.LbCompanyia.Visible = false;
 
         }
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btModificarCli_Click(object sender, EventArgs e)
+        {
+            this.btAlta.Enabled = false;
+            this.btEsborrar.Enabled = false;
+        }
+
+
     }
 }

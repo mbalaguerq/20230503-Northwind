@@ -45,6 +45,8 @@
             this.LbCompanyia = new System.Windows.Forms.Label();
             this.textBoxCompany = new System.Windows.Forms.TextBox();
             this.lcCompanyia2 = new System.Windows.Forms.Label();
+            this.btModificarCli = new System.Windows.Forms.Button();
+            this.btEliminarCli = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxCustomer
@@ -160,6 +162,7 @@
             this.btCancelar.TabIndex = 12;
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
+            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
             // 
             // btEsborrar
             // 
@@ -175,7 +178,7 @@
             // 
             this.LbCompanyia.AutoSize = true;
             this.LbCompanyia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LbCompanyia.Location = new System.Drawing.Point(54, 80);
+            this.LbCompanyia.Location = new System.Drawing.Point(57, 320);
             this.LbCompanyia.Name = "LbCompanyia";
             this.LbCompanyia.Size = new System.Drawing.Size(79, 16);
             this.LbCompanyia.TabIndex = 14;
@@ -198,11 +201,33 @@
             this.lcCompanyia2.TabIndex = 16;
             this.lcCompanyia2.Text = "Companyia:";
             // 
+            // btModificarCli
+            // 
+            this.btModificarCli.Location = new System.Drawing.Point(296, 367);
+            this.btModificarCli.Name = "btModificarCli";
+            this.btModificarCli.Size = new System.Drawing.Size(156, 26);
+            this.btModificarCli.TabIndex = 17;
+            this.btModificarCli.Text = "Modificar Client";
+            this.btModificarCli.UseVisualStyleBackColor = true;
+            this.btModificarCli.Click += new System.EventHandler(this.btModificarCli_Click);
+            // 
+            // btEliminarCli
+            // 
+            this.btEliminarCli.Location = new System.Drawing.Point(480, 367);
+            this.btEliminarCli.Name = "btEliminarCli";
+            this.btEliminarCli.Size = new System.Drawing.Size(156, 26);
+            this.btEliminarCli.TabIndex = 18;
+            this.btEliminarCli.Text = "Eliminar Client";
+            this.btEliminarCli.UseVisualStyleBackColor = true;
+            this.btEliminarCli.Click += new System.EventHandler(this.btEliminarCli_Click);
+            // 
             // FormClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btEliminarCli);
+            this.Controls.Add(this.btModificarCli);
             this.Controls.Add(this.lcCompanyia2);
             this.Controls.Add(this.textBoxCompany);
             this.Controls.Add(this.LbCompanyia);
@@ -247,5 +272,7 @@
         private System.Windows.Forms.Label LbCompanyia;
         private System.Windows.Forms.TextBox textBoxCompany;
         private System.Windows.Forms.Label lcCompanyia2;
+        private System.Windows.Forms.Button btModificarCli;
+        private System.Windows.Forms.Button btEliminarCli;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using _20230503_Northwind.Controlador;
+using _20230503_Northwind.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -25,7 +26,8 @@ namespace _20230503_Northwind
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            ProgramaController controller = new ProgramaController(conexion);
+            DSNorthwind ds = new DSNorthwind();
+            ProgramaController controller = new ProgramaController(conexion,ds);
 
             //instrucció per conectar a BBDD            
             //Application.Run(new ProgramaController(conexion));
