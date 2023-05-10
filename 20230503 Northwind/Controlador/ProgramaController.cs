@@ -28,6 +28,12 @@ namespace _20230503_Northwind.Controlador
             FormClients formClients = new FormClients(conection, clientController, ds, opcio);
             formClients.Show();
         }
+        public void menuProductes(int opcio)
+        {
+            ProgramaController programaController = new ProgramaController(conection,ds);
+            FormProductes formProductes = new FormProductes(conection, programaController, ds, opcio);  
+            formProductes.Show();
+        }
 
 
     }

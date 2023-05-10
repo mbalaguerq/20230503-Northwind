@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace _20230503_Northwind
 {
@@ -36,6 +37,7 @@ namespace _20230503_Northwind
             if (ds.Customers.Rows.Count == 0)
             {
                 MessageBox.Show("El cliente no existe");
+
                 this.btAlta.Visible = true;
                 this.btCancelar.Visible = true;
                 this.lcCompanyia2.Visible = true;
@@ -122,21 +124,30 @@ namespace _20230503_Northwind
                     string company = this.textBoxCompany.Text;
                     string pais = this.textBoxPais.Text;
 
-                    nRows = clientController.altaClient(customer, nombre, direccion, ciudad, pais, company);
+                    string message = "Vol confirmar l'Alta?";
+                    string caption = "Alta Client";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result;
+                    result = MessageBox.Show(message, caption, buttons);
+                    if (result == System.Windows.Forms.DialogResult.Yes)
+                    {                       
+                        nRows = clientController.altaClient(customer, nombre, direccion, ciudad, pais, company);
 
-                    if (nRows > 0)
-                    {
-                        MessageBox.Show("Se ha grabado correctamente");
+                        if (nRows > 0)
+                        {
+                            MessageBox.Show("S'ha gravat correctament");
+                        }
+                        this.textBoxCustomer.Text = "";
+                        this.textBoxNombre.Text = "";
+                        this.textBoxDireccion.Text = "";
+                        this.textBoxCiudad.Text = "";
+                        this.textBoxPais.Text = "";
+                        this.lbclient.Visible = true;
+                        this.LbCompanyia.Visible = false;
+                        this.lcCompanyia2.Visible = false;
+                        this.textBoxCompany.Visible = false;
+                        this.btCancelar.Visible = true;
                     }
-                    this.textBoxCustomer.Text = "";
-                    this.textBoxNombre.Text = "";
-                    this.textBoxDireccion.Text = "";
-                    this.textBoxCiudad.Text = "";
-                    this.textBoxPais.Text = "";
-                    this.lbclient.Visible = true;
-                    this.LbCompanyia.Visible = false;
-                    this.lcCompanyia2.Visible = false;
-                    this.textBoxCompany.Visible = false;
                 }
                 else if (this.textBoxCustomer.Text.Equals("") || this.textBoxNombre.Text.Equals("")
                          || this.textBoxCompany.Text.Equals(""))
@@ -162,23 +173,31 @@ namespace _20230503_Northwind
                 int nRows;
                 if (!this.textBoxCustomer.Text.Equals("") && !this.textBoxNombre.Text.Equals(""))
                 {
-                    string customer = this.textBoxCustomer.Text;                    
-
-                    nRows = clientController.eliminaClient(customer);
-
-                    if (nRows > 0)
+                    string message = "Confirma que vol eliminar aquest client?";
+                    string caption = "Eliminar Client";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result;
+                    result = MessageBox.Show(message, caption, buttons);
+                    if (result == System.Windows.Forms.DialogResult.Yes)
                     {
-                        MessageBox.Show("S'ha eliminat el client correctament");
+                        string customer = this.textBoxCustomer.Text;
+
+                        nRows = clientController.eliminaClient(customer);
+
+                        if (nRows > 0)
+                        {
+                            MessageBox.Show("S'ha eliminat el client correctament");
+                        }
+                        this.textBoxCustomer.Text = "";
+                        this.textBoxNombre.Text = "";
+                        this.textBoxDireccion.Text = "";
+                        this.textBoxCiudad.Text = "";
+                        this.textBoxPais.Text = "";
+                        this.lbclient.Visible = true;
+                        this.LbCompanyia.Visible = false;
+                        this.lcCompanyia2.Visible = false;
+                        this.textBoxCompany.Visible = false;
                     }
-                    this.textBoxCustomer.Text = "";
-                    this.textBoxNombre.Text = "";
-                    this.textBoxDireccion.Text = "";
-                    this.textBoxCiudad.Text = "";
-                    this.textBoxPais.Text = "";
-                    this.lbclient.Visible = true;
-                    this.LbCompanyia.Visible = false;
-                    this.lcCompanyia2.Visible = false;
-                    this.textBoxCompany.Visible = false;
                 }
                 else if (this.textBoxCustomer.Text.Equals("") || this.textBoxNombre.Text.Equals("")
                          || this.textBoxCompany.Text.Equals(""))
