@@ -36,6 +36,10 @@
             this.botoAltaCli = new System.Windows.Forms.Button();
             this.botoDeleteCli = new System.Windows.Forms.Button();
             this.botoModifiCli = new System.Windows.Forms.Button();
+            this.botoConsultaProd = new System.Windows.Forms.Button();
+            this.botoNouProd = new System.Windows.Forms.Button();
+            this.botoElimiProd = new System.Windows.Forms.Button();
+            this.botoModifiProd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,6 +75,7 @@
             this.botoProductes.TabIndex = 2;
             this.botoProductes.Text = "Gestió Productes";
             this.botoProductes.UseVisualStyleBackColor = true;
+            this.botoProductes.Click += new System.EventHandler(this.botoProductes_Click);
             // 
             // botoComandes
             // 
@@ -126,12 +131,60 @@
             this.botoModifiCli.UseVisualStyleBackColor = true;
             this.botoModifiCli.Click += new System.EventHandler(this.botoModifiCli_Click);
             // 
+            // botoConsultaProd
+            // 
+            this.botoConsultaProd.Font = new System.Drawing.Font("Nachlieli CLM", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.botoConsultaProd.Location = new System.Drawing.Point(365, 147);
+            this.botoConsultaProd.Name = "botoConsultaProd";
+            this.botoConsultaProd.Size = new System.Drawing.Size(254, 45);
+            this.botoConsultaProd.TabIndex = 8;
+            this.botoConsultaProd.Text = "Consultar Producte";
+            this.botoConsultaProd.UseVisualStyleBackColor = true;
+            this.botoConsultaProd.Click += new System.EventHandler(this.botoConsultaProd_Click);
+            // 
+            // botoNouProd
+            // 
+            this.botoNouProd.Font = new System.Drawing.Font("Nachlieli CLM", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.botoNouProd.Location = new System.Drawing.Point(365, 215);
+            this.botoNouProd.Name = "botoNouProd";
+            this.botoNouProd.Size = new System.Drawing.Size(254, 45);
+            this.botoNouProd.TabIndex = 9;
+            this.botoNouProd.Text = "Alta Nou Producte";
+            this.botoNouProd.UseVisualStyleBackColor = true;
+            this.botoNouProd.Click += new System.EventHandler(this.botoNouProd_Click);
+            // 
+            // botoElimiProd
+            // 
+            this.botoElimiProd.Font = new System.Drawing.Font("Nachlieli CLM", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.botoElimiProd.Location = new System.Drawing.Point(365, 284);
+            this.botoElimiProd.Name = "botoElimiProd";
+            this.botoElimiProd.Size = new System.Drawing.Size(254, 45);
+            this.botoElimiProd.TabIndex = 10;
+            this.botoElimiProd.Text = "Eliminar Producte";
+            this.botoElimiProd.UseVisualStyleBackColor = true;
+            this.botoElimiProd.Click += new System.EventHandler(this.botoElimiProd_Click);
+            // 
+            // botoModifiProd
+            // 
+            this.botoModifiProd.Font = new System.Drawing.Font("Nachlieli CLM", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.botoModifiProd.Location = new System.Drawing.Point(365, 351);
+            this.botoModifiProd.Name = "botoModifiProd";
+            this.botoModifiProd.Size = new System.Drawing.Size(254, 45);
+            this.botoModifiProd.TabIndex = 11;
+            this.botoModifiProd.Text = "Modificar Producte";
+            this.botoModifiProd.UseVisualStyleBackColor = true;
+            this.botoModifiProd.Click += new System.EventHandler(this.botoModifiProd_Click);
+            // 
             // MenuView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.botoModifiProd);
+            this.Controls.Add(this.botoElimiProd);
+            this.Controls.Add(this.botoNouProd);
+            this.Controls.Add(this.botoConsultaProd);
             this.Controls.Add(this.botoModifiCli);
             this.Controls.Add(this.botoDeleteCli);
             this.Controls.Add(this.botoAltaCli);
@@ -158,5 +211,9 @@
         private System.Windows.Forms.Button botoAltaCli;
         private System.Windows.Forms.Button botoDeleteCli;
         private System.Windows.Forms.Button botoModifiCli;
+        private System.Windows.Forms.Button botoConsultaProd;
+        private System.Windows.Forms.Button botoNouProd;
+        private System.Windows.Forms.Button botoElimiProd;
+        private System.Windows.Forms.Button botoModifiProd;
     }
 }

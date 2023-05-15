@@ -41,7 +41,6 @@
             this.lbProductName = new System.Windows.Forms.Label();
             this.lbclient = new System.Windows.Forms.Label();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
-            this.textBoxSupplierID = new System.Windows.Forms.TextBox();
             this.textBoxQxU = new System.Windows.Forms.TextBox();
             this.textBoxProductID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,13 +49,18 @@
             this.textBoxCategoryID = new System.Windows.Forms.TextBox();
             this.textBoxCategoryName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.botoEliminarProd = new System.Windows.Forms.Button();
+            this.botoMidifiProd = new System.Windows.Forms.Button();
+            this.cbDistribuidors = new System.Windows.Forms.ComboBox();
+            this.textboxDistribuidorID = new System.Windows.Forms.TextBox();
+            this.textBoxCompanyName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lbPrice
             // 
             this.lbPrice.AutoSize = true;
             this.lbPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrice.Location = new System.Drawing.Point(75, 391);
+            this.lbPrice.Location = new System.Drawing.Point(79, 358);
             this.lbPrice.Name = "lbPrice";
             this.lbPrice.Size = new System.Drawing.Size(70, 16);
             this.lbPrice.TabIndex = 33;
@@ -64,7 +68,7 @@
             // 
             // textBoxPrice
             // 
-            this.textBoxPrice.Location = new System.Drawing.Point(194, 387);
+            this.textBoxPrice.Location = new System.Drawing.Point(194, 354);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(248, 20);
             this.textBoxPrice.TabIndex = 32;
@@ -73,7 +77,7 @@
             // 
             this.LbProductId.AutoSize = true;
             this.LbProductId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LbProductId.Location = new System.Drawing.Point(79, 122);
+            this.LbProductId.Location = new System.Drawing.Point(79, 102);
             this.LbProductId.Name = "LbProductId";
             this.LbProductId.Size = new System.Drawing.Size(75, 16);
             this.LbProductId.TabIndex = 31;
@@ -81,7 +85,7 @@
             // 
             // btEsborrar
             // 
-            this.btEsborrar.Location = new System.Drawing.Point(482, 112);
+            this.btEsborrar.Location = new System.Drawing.Point(484, 94);
             this.btEsborrar.Name = "btEsborrar";
             this.btEsborrar.Size = new System.Drawing.Size(69, 26);
             this.btEsborrar.TabIndex = 30;
@@ -91,7 +95,7 @@
             // 
             // btCancelar
             // 
-            this.btCancelar.Location = new System.Drawing.Point(535, 68);
+            this.btCancelar.Location = new System.Drawing.Point(535, 49);
             this.btCancelar.Name = "btCancelar";
             this.btCancelar.Size = new System.Drawing.Size(156, 26);
             this.btCancelar.TabIndex = 29;
@@ -101,7 +105,7 @@
             // 
             // btAlta
             // 
-            this.btAlta.Location = new System.Drawing.Point(351, 68);
+            this.btAlta.Location = new System.Drawing.Point(351, 49);
             this.btAlta.Name = "btAlta";
             this.btAlta.Size = new System.Drawing.Size(156, 26);
             this.btAlta.TabIndex = 28;
@@ -111,7 +115,7 @@
             // 
             // btconsultar
             // 
-            this.btconsultar.Location = new System.Drawing.Point(393, 112);
+            this.btconsultar.Location = new System.Drawing.Point(393, 94);
             this.btconsultar.Name = "btconsultar";
             this.btconsultar.Size = new System.Drawing.Size(72, 26);
             this.btconsultar.TabIndex = 27;
@@ -123,7 +127,7 @@
             // 
             this.lbQuantity.AutoSize = true;
             this.lbQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbQuantity.Location = new System.Drawing.Point(75, 346);
+            this.lbQuantity.Location = new System.Drawing.Point(75, 321);
             this.lbQuantity.Name = "lbQuantity";
             this.lbQuantity.Size = new System.Drawing.Size(105, 16);
             this.lbQuantity.TabIndex = 26;
@@ -133,7 +137,7 @@
             // 
             this.lbCategoryID.AutoSize = true;
             this.lbCategoryID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCategoryID.Location = new System.Drawing.Point(79, 271);
+            this.lbCategoryID.Location = new System.Drawing.Point(79, 247);
             this.lbCategoryID.Name = "lbCategoryID";
             this.lbCategoryID.Size = new System.Drawing.Size(66, 16);
             this.lbCategoryID.TabIndex = 25;
@@ -143,7 +147,7 @@
             // 
             this.lbSupplier.AutoSize = true;
             this.lbSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSupplier.Location = new System.Drawing.Point(79, 223);
+            this.lbSupplier.Location = new System.Drawing.Point(79, 177);
             this.lbSupplier.Name = "lbSupplier";
             this.lbSupplier.Size = new System.Drawing.Size(75, 16);
             this.lbSupplier.TabIndex = 24;
@@ -153,7 +157,7 @@
             // 
             this.lbProductName.AutoSize = true;
             this.lbProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbProductName.Location = new System.Drawing.Point(79, 171);
+            this.lbProductName.Location = new System.Drawing.Point(75, 139);
             this.lbProductName.Name = "lbProductName";
             this.lbProductName.Size = new System.Drawing.Size(39, 16);
             this.lbProductName.TabIndex = 23;
@@ -163,7 +167,7 @@
             // 
             this.lbclient.AutoSize = true;
             this.lbclient.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbclient.Location = new System.Drawing.Point(112, 122);
+            this.lbclient.Location = new System.Drawing.Point(95, 102);
             this.lbclient.Name = "lbclient";
             this.lbclient.Size = new System.Drawing.Size(59, 16);
             this.lbclient.TabIndex = 22;
@@ -171,28 +175,21 @@
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(194, 167);
+            this.textBoxNombre.Location = new System.Drawing.Point(194, 135);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(248, 20);
             this.textBoxNombre.TabIndex = 21;
             // 
-            // textBoxSupplierID
-            // 
-            this.textBoxSupplierID.Location = new System.Drawing.Point(194, 219);
-            this.textBoxSupplierID.Name = "textBoxSupplierID";
-            this.textBoxSupplierID.Size = new System.Drawing.Size(248, 20);
-            this.textBoxSupplierID.TabIndex = 20;
-            // 
             // textBoxQxU
             // 
-            this.textBoxQxU.Location = new System.Drawing.Point(194, 342);
+            this.textBoxQxU.Location = new System.Drawing.Point(194, 317);
             this.textBoxQxU.Name = "textBoxQxU";
             this.textBoxQxU.Size = new System.Drawing.Size(248, 20);
             this.textBoxQxU.TabIndex = 18;
             // 
             // textBoxProductID
             // 
-            this.textBoxProductID.Location = new System.Drawing.Point(194, 118);
+            this.textBoxProductID.Location = new System.Drawing.Point(194, 98);
             this.textBoxProductID.Name = "textBoxProductID";
             this.textBoxProductID.Size = new System.Drawing.Size(174, 20);
             this.textBoxProductID.TabIndex = 17;
@@ -220,7 +217,7 @@
             // cbCategorias
             // 
             this.cbCategorias.FormattingEnabled = true;
-            this.cbCategorias.Location = new System.Drawing.Point(194, 271);
+            this.cbCategorias.Location = new System.Drawing.Point(194, 242);
             this.cbCategorias.Name = "cbCategorias";
             this.cbCategorias.Size = new System.Drawing.Size(248, 21);
             this.cbCategorias.TabIndex = 36;
@@ -228,14 +225,14 @@
             // 
             // textBoxCategoryID
             // 
-            this.textBoxCategoryID.Location = new System.Drawing.Point(194, 307);
+            this.textBoxCategoryID.Location = new System.Drawing.Point(194, 277);
             this.textBoxCategoryID.Name = "textBoxCategoryID";
             this.textBoxCategoryID.Size = new System.Drawing.Size(49, 20);
             this.textBoxCategoryID.TabIndex = 37;
             // 
             // textBoxCategoryName
             // 
-            this.textBoxCategoryName.Location = new System.Drawing.Point(249, 307);
+            this.textBoxCategoryName.Location = new System.Drawing.Point(249, 277);
             this.textBoxCategoryName.Name = "textBoxCategoryName";
             this.textBoxCategoryName.Size = new System.Drawing.Size(193, 20);
             this.textBoxCategoryName.TabIndex = 50;
@@ -251,12 +248,59 @@
             this.label3.Text = "Alta nou producte";
             this.label3.Visible = false;
             // 
+            // botoEliminarProd
+            // 
+            this.botoEliminarProd.Location = new System.Drawing.Point(351, 394);
+            this.botoEliminarProd.Name = "botoEliminarProd";
+            this.botoEliminarProd.Size = new System.Drawing.Size(156, 26);
+            this.botoEliminarProd.TabIndex = 51;
+            this.botoEliminarProd.Text = "Eliminar Producte";
+            this.botoEliminarProd.UseVisualStyleBackColor = true;
+            this.botoEliminarProd.Click += new System.EventHandler(this.botoEliminarProd_Click);
+            // 
+            // botoMidifiProd
+            // 
+            this.botoMidifiProd.Location = new System.Drawing.Point(535, 394);
+            this.botoMidifiProd.Name = "botoMidifiProd";
+            this.botoMidifiProd.Size = new System.Drawing.Size(156, 26);
+            this.botoMidifiProd.TabIndex = 52;
+            this.botoMidifiProd.Text = "Modificar Producte";
+            this.botoMidifiProd.UseVisualStyleBackColor = true;
+            // 
+            // cbDistribuidors
+            // 
+            this.cbDistribuidors.FormattingEnabled = true;
+            this.cbDistribuidors.Location = new System.Drawing.Point(194, 172);
+            this.cbDistribuidors.Name = "cbDistribuidors";
+            this.cbDistribuidors.Size = new System.Drawing.Size(248, 21);
+            this.cbDistribuidors.TabIndex = 53;
+            this.cbDistribuidors.SelectedIndexChanged += new System.EventHandler(this.cbDistribuidors_SelectedIndexChanged_1);
+            // 
+            // textboxDistribuidorID
+            // 
+            this.textboxDistribuidorID.Location = new System.Drawing.Point(194, 208);
+            this.textboxDistribuidorID.Name = "textboxDistribuidorID";
+            this.textboxDistribuidorID.Size = new System.Drawing.Size(49, 20);
+            this.textboxDistribuidorID.TabIndex = 54;
+            // 
+            // textBoxCompanyName
+            // 
+            this.textBoxCompanyName.Location = new System.Drawing.Point(249, 208);
+            this.textBoxCompanyName.Name = "textBoxCompanyName";
+            this.textBoxCompanyName.Size = new System.Drawing.Size(193, 20);
+            this.textBoxCompanyName.TabIndex = 55;
+            // 
             // FormProductes
             // 
             this.AcceptButton = this.btconsultar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBoxCompanyName);
+            this.Controls.Add(this.textboxDistribuidorID);
+            this.Controls.Add(this.cbDistribuidors);
+            this.Controls.Add(this.botoMidifiProd);
+            this.Controls.Add(this.botoEliminarProd);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxCategoryName);
             this.Controls.Add(this.textBoxCategoryID);
@@ -276,7 +320,6 @@
             this.Controls.Add(this.lbProductName);
             this.Controls.Add(this.lbclient);
             this.Controls.Add(this.textBoxNombre);
-            this.Controls.Add(this.textBoxSupplierID);
             this.Controls.Add(this.textBoxQxU);
             this.Controls.Add(this.textBoxProductID);
             this.Name = "FormProductes";
@@ -302,7 +345,6 @@
         private System.Windows.Forms.Label lbProductName;
         private System.Windows.Forms.Label lbclient;
         private System.Windows.Forms.TextBox textBoxNombre;
-        private System.Windows.Forms.TextBox textBoxSupplierID;
         private System.Windows.Forms.TextBox textBoxQxU;
         private System.Windows.Forms.TextBox textBoxProductID;
         private System.Windows.Forms.Label label1;
@@ -311,5 +353,10 @@
         private System.Windows.Forms.TextBox textBoxCategoryID;
         private System.Windows.Forms.TextBox textBoxCategoryName;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button botoEliminarProd;
+        private System.Windows.Forms.Button botoMidifiProd;
+        private System.Windows.Forms.ComboBox cbDistribuidors;
+        private System.Windows.Forms.TextBox textboxDistribuidorID;
+        private System.Windows.Forms.TextBox textBoxCompanyName;
     }
 }

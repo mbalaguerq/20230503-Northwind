@@ -106,6 +106,7 @@ namespace _20230503_Northwind
                 this.btAlta.Visible = false;
                 this.btCancelar.Visible = true;
             }
+
         }
         private void btAlta_Click(object sender, EventArgs e)
         {
@@ -173,12 +174,19 @@ namespace _20230503_Northwind
                 int nRows;
                 if (!this.textBoxCustomer.Text.Equals("") && !this.textBoxNombre.Text.Equals(""))
                 {
+                    string client = this.textBoxNombre.Text;
+
+                    ds = clientController.consultaClients(client);
+
+
+
+
                     string message = "Confirma que vol eliminar aquest client?";
                     string caption = "Eliminar Client";
                     MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                     DialogResult result;
                     result = MessageBox.Show(message, caption, buttons);
-                    if (result == System.Windows.Forms.DialogResult.Yes)
+                    if (result == DialogResult.Yes)
                     {
                         string customer = this.textBoxCustomer.Text;
 
@@ -210,7 +218,6 @@ namespace _20230503_Northwind
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btEsborrar_Click(object sender, EventArgs e)
         {
             this.textBoxCustomer.Text = "";
@@ -226,7 +233,6 @@ namespace _20230503_Northwind
         {
             this.Dispose();
         }
-
         private void btModificarCli_Click(object sender, EventArgs e)
         {
             this.btAlta.Enabled = false;
