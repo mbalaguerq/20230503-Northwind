@@ -116,5 +116,9 @@ namespace _20230503_Northwind.Vista
             int modifi = 4;
             programaController.menuProductes(modifi);
         }
+        private void botoComandes_Click(object sender, EventArgs e)
+        {
+            programaController.menuComandes();
+        }
     }
 }

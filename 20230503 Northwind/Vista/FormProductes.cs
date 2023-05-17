@@ -13,7 +13,7 @@ using System.Windows.Forms;
 using _20230503_Northwind.Controlador;
 using _20230503_Northwind.Model;
 using System.Text.RegularExpressions;
-
+using System.ComponentModel.Design.Serialization;
 
 namespace _20230503_Northwind
 {
@@ -42,6 +42,7 @@ namespace _20230503_Northwind
                 this.botoMidifiProd.Visible = false;
                 this.cbCategorias.Enabled = false;
                 this.cbDistribuidors.Enabled = false;
+                this.label2.Visible = true;
             }
             if(opcio==2)
             {
@@ -50,6 +51,8 @@ namespace _20230503_Northwind
                 this.botoEliminarProd.Visible = false;
                 this.botoMidifiProd.Visible = false;
                 this.btconsultar.Enabled = false;
+                this.textBoxProductID.Enabled = false;
+                this.label3.Visible = true;
             }
             if(opcio==3)
             {
@@ -58,6 +61,7 @@ namespace _20230503_Northwind
                 this.botoEliminarProd.Visible = true;
                 this.botoMidifiProd.Visible = false;
                 this.btconsultar.Enabled = true;
+                this.label4ElimiProd.Visible = true;
             }
             if(opcio==4)
             {
@@ -67,29 +71,38 @@ namespace _20230503_Northwind
                 this.botoMidifiProd.Visible = true;
                 this.btconsultar.Enabled = true;
                 this.botoEliminarProd.Visible = false;
-            }
+                this.label5ModifiProd.Visible=true;
+                this.panellModifiProd.Visible = true;
+                MessageBox.Show("Introdueix els camps a modificar");
+            }            
+
             DSNorthwind dsNd = new DSNorthwind();
             dsNd = producteController.cbDistribuidors();            
             this.cbDistribuidors.DataSource = dsNd.Suppliers;
             this.cbDistribuidors.DisplayMember = "CompanyName";
             this.cbDistribuidors.ValueMember = "SupplierID";
             this.cbDistribuidors.SelectedIndex = 0;
-            this.textboxDistribuidorID.Text = string.Empty;
-            this.textBoxCompanyName.Text = string.Empty;
-            this.textboxDistribuidorID.Visible = true;
-            this.textBoxCompanyName.Visible = true;
+
+            DSNorthwind dsNdis2 = new DSNorthwind();
+            dsNdis2 = producteController.cbDistribuidors();
+            this.cbDistri2.DataSource = dsNdis2.Suppliers;
+            this.cbDistri2.DisplayMember = "CompanyName";
+            this.cbDistri2.ValueMember = "SupplierID";
+            this.cbDistri2.SelectedIndex = 0;
 
             DSNorthwind dsN = new DSNorthwind();
             dsN=producteController.cbCategories();
-
             this.cbCategorias.DataSource = dsN.Categories;
             this.cbCategorias.DisplayMember = "CategoryName";
             this.cbCategorias.ValueMember = "CategoryID";
             this.cbCategorias.SelectedIndex = 0;
-            this.textBoxCategoryID.Text = string.Empty;
-            this.textBoxCategoryName.Text = string.Empty;
-            this.textBoxCategoryID.Visible = true;
-            this.textBoxCategoryName.Visible = true;
+
+            DSNorthwind dsNCat2 = new DSNorthwind();
+            dsNCat2 = producteController.cbCategories();
+            this.cbCateg2.DataSource = dsNCat2.Categories;
+            this.cbCateg2.DisplayMember = "CategoryName";
+            this.cbCateg2.ValueMember = "CategoryID";
+            this.cbCateg2.SelectedIndex = 0;
         }
         private void btconsultar_Click(object sender, EventArgs e)
         {
@@ -114,12 +127,12 @@ namespace _20230503_Northwind
                 {
                     this.textBoxProductID.Text = ds.Products[0].ProductID.ToString();
                     this.textBoxNombre.Text = ds.Products[0].ProductName;
-                    //this.textBoxSupplierID.Text = ds.Products[0].SupplierID.ToString();
-                    this.cbDistribuidors.Text = ds.Products[0].SupplierID.ToString();
-                    this.cbCategorias.Text = ds.Products[0].CategoryID.ToString();
+                    this.cbDistribuidors.SelectedValue = ds.Products[0].SupplierID.ToString();                                       
+                    this.cbCategorias.SelectedValue = ds.Products[0].CategoryID.ToString();                  
                     this.textBoxQxU.Text = ds.Products[0].QuantityPerUnit;
                     this.textBoxPrice.Text = $" {ds.Products[0].UnitPrice.ToString()} €";
                 }
+                ds.Products.Clear();
             }
             else
             {
@@ -133,38 +146,8 @@ namespace _20230503_Northwind
             this.cbCategorias.Text = string.Empty;
             this.cbDistribuidors.Text = string.Empty;
             this.textBoxQxU.Text = string.Empty;
-            this.textBoxPrice.Text = string.Empty;
-            this.textBoxCategoryID.Text = string.Empty;
-            this.textBoxCategoryName.Text = string.Empty;
-            this.textBoxCategoryID.Text = string.Empty;
-            this.textBoxCategoryName.Text = string.Empty;
-        }
-        private void cbCategorias_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbCategorias.SelectedIndex > 0)
-            {
-                this.textBoxCategoryID.Text = cbCategorias.SelectedValue.ToString();
-                this.textBoxCategoryName.Text = cbCategorias.Text;
-            }
-            else
-            {
-                this.textBoxProductID.Text = string.Empty;
-                this.textBoxCategoryName.Text = string.Empty;
-            }
-        }
-        private void cbDistribuidors_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            if (cbDistribuidors.SelectedIndex > 0)
-            {
-                this.textboxDistribuidorID.Text = cbDistribuidors.SelectedValue.ToString();
-                this.textBoxCompanyName.Text = cbDistribuidors.Text;
-            }
-            else
-            {
-                this.textBoxCategoryID.Text = string.Empty;
-                this.textBoxCategoryName.Text = string.Empty;
-            }
-        }
+            this.textBoxPrice.Text = string.Empty;            
+        }          
         private void btCancelar_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -174,11 +157,13 @@ namespace _20230503_Northwind
             try
             {
                 int nRows;
+                string prod = this.textBoxProductID.Text;
+
                 if (!this.textBoxNombre.Text.Equals(string.Empty))
                 {
                     string nom = this.textBoxNombre.Text;
-                    string prodID = this.textboxDistribuidorID.Text;
-                    string categoria = this.textBoxCategoryID.Text;
+                    string distriID = ds.Products[0].SupplierID.ToString();
+                    string categoria = ds.Products[0].CategoryID.ToString();
                     string quantitat = this.textBoxQxU.Text;
                     string preu = this.textBoxPrice.Text;
 
@@ -189,7 +174,7 @@ namespace _20230503_Northwind
                     result = MessageBox.Show(message, caption, buttons);
                     if (result == DialogResult.Yes)
                     {
-                        nRows = producteController.altaProducte(nom, prodID, categoria, quantitat, preu);
+                        nRows = producteController.altaProducte(nom, distriID, categoria, quantitat, preu);
 
                         if (nRows > 0)
                         {
@@ -200,12 +185,8 @@ namespace _20230503_Northwind
                     this.textBoxNombre.Text = string.Empty;                  
                     this.cbCategorias.Text = string.Empty;
                     this.textBoxQxU.Text = string.Empty;
-                    this.textBoxPrice.Text = string.Empty;
-                    this.textBoxCategoryID.Text = string.Empty;
-                    this.textBoxCategoryName.Text = string.Empty;
-                    this.textboxDistribuidorID.Text = string.Empty;
-                    this.textBoxCompanyName.Text = string.Empty;
-                    this.textBoxCategoryID.Text = string.Empty;                   
+                    this.textBoxPrice.Text = string.Empty;                    
+                    this.cbDistribuidors.Text = string.Empty;
                 }
                 else
                 {
@@ -259,12 +240,7 @@ namespace _20230503_Northwind
                             this.textBoxNombre.Text = string.Empty;
                             this.cbCategorias.Text = string.Empty;
                             this.textBoxQxU.Text = string.Empty;
-                            this.textBoxPrice.Text = string.Empty;
-                            this.textBoxCategoryID.Text = string.Empty;
-                            this.textBoxCategoryName.Text = string.Empty;
-                            this.textboxDistribuidorID.Text = string.Empty;
-                            this.textBoxCompanyName.Text = string.Empty;
-                            this.textBoxCategoryID.Text = string.Empty;
+                            this.textBoxPrice.Text = string.Empty;                          
                         }
                     }
                 }
@@ -274,5 +250,36 @@ namespace _20230503_Northwind
                 MessageBox.Show(ex.Message);
             }
         }
+        private void botoMidifiProd_Click(object sender, EventArgs e)
+        {
+            int nRows;
+            int id =int.Parse(this.textBoxProductID.Text);
+            string mNOm = this.tModifiNom.Text;
+            int mdistri = int.Parse(this.cbDistri2.SelectedValue.ToString());
+            int mCateg =int.Parse(this.cbCateg2.SelectedValue.ToString());
+            int mQuantitat =int.Parse( this.tModifiQuant.Text);
+            decimal mPreu =decimal.Parse( this.tModifiPvp.Text);
+
+            nRows = producteController.modifiClient(id, mNOm, mdistri, mCateg, mQuantitat, mPreu);
+
+            if (nRows > 0)
+            {
+                MessageBox.Show("S'ha modificat el producte correctament");
+            }
+            string idprod=id.ToString();
+
+            ds = producteController.consultaProducte(idprod);
+            this.textBoxProductID.Text = ds.Products[0].ProductID.ToString();
+            this.textBoxNombre.Text = ds.Products[0].ProductName;
+            this.cbDistribuidors.SelectedValue = ds.Products[0].SupplierID.ToString();
+            this.cbCategorias.SelectedValue = ds.Products[0].CategoryID.ToString();
+            this.textBoxQxU.Text = ds.Products[0].QuantityPerUnit;
+            this.textBoxPrice.Text = ds.Products[0].UnitPrice.ToString();   
+            ds.Products.Clear();
+            this.panellModifiProd.Visible = false;           
+
+        }
+
+      
     }
 }

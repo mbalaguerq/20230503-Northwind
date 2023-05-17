@@ -47,6 +47,13 @@
             this.lcCompanyia2 = new System.Windows.Forms.Label();
             this.btModificarCli = new System.Windows.Forms.Button();
             this.btEliminarCli = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tModifiCompanyia = new System.Windows.Forms.TextBox();
+            this.tModifiPais = new System.Windows.Forms.TextBox();
+            this.tModifiCiutat = new System.Windows.Forms.TextBox();
+            this.tModifiAdreça = new System.Windows.Forms.TextBox();
+            this.tModifiNom = new System.Windows.Forms.TextBox();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxCustomer
@@ -79,7 +86,7 @@
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(139, 125);
+            this.textBoxNombre.Location = new System.Drawing.Point(139, 128);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(248, 20);
             this.textBoxNombre.TabIndex = 4;
@@ -221,11 +228,61 @@
             this.btEliminarCli.UseVisualStyleBackColor = true;
             this.btEliminarCli.Click += new System.EventHandler(this.btEliminarCli_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.tModifiCompanyia);
+            this.panel1.Controls.Add(this.tModifiPais);
+            this.panel1.Controls.Add(this.tModifiCiutat);
+            this.panel1.Controls.Add(this.tModifiAdreça);
+            this.panel1.Controls.Add(this.tModifiNom);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(451, 125);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(250, 215);
+            this.panel1.TabIndex = 19;
+            this.panel1.Visible = false;
+            // 
+            // tModifiCompanyia
+            // 
+            this.tModifiCompanyia.Location = new System.Drawing.Point(3, 195);
+            this.tModifiCompanyia.Name = "tModifiCompanyia";
+            this.tModifiCompanyia.Size = new System.Drawing.Size(248, 21);
+            this.tModifiCompanyia.TabIndex = 24;
+            // 
+            // tModifiPais
+            // 
+            this.tModifiPais.Location = new System.Drawing.Point(0, 150);
+            this.tModifiPais.Name = "tModifiPais";
+            this.tModifiPais.Size = new System.Drawing.Size(248, 21);
+            this.tModifiPais.TabIndex = 23;
+            // 
+            // tModifiCiutat
+            // 
+            this.tModifiCiutat.Location = new System.Drawing.Point(0, 100);
+            this.tModifiCiutat.Name = "tModifiCiutat";
+            this.tModifiCiutat.Size = new System.Drawing.Size(248, 21);
+            this.tModifiCiutat.TabIndex = 22;
+            // 
+            // tModifiAdreça
+            // 
+            this.tModifiAdreça.Location = new System.Drawing.Point(0, 55);
+            this.tModifiAdreça.Name = "tModifiAdreça";
+            this.tModifiAdreça.Size = new System.Drawing.Size(248, 21);
+            this.tModifiAdreça.TabIndex = 21;
+            // 
+            // tModifiNom
+            // 
+            this.tModifiNom.Location = new System.Drawing.Point(0, 0);
+            this.tModifiNom.Name = "tModifiNom";
+            this.tModifiNom.Size = new System.Drawing.Size(248, 21);
+            this.tModifiNom.TabIndex = 20;
+            // 
             // FormClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btEliminarCli);
             this.Controls.Add(this.btModificarCli);
             this.Controls.Add(this.lcCompanyia2);
@@ -248,6 +305,9 @@
             this.Name = "FormClients";
             this.Text = "FormClients";
             this.Load += new System.EventHandler(this.FormClients_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormClients_MouseMove);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,5 +334,11 @@
         private System.Windows.Forms.Label lcCompanyia2;
         private System.Windows.Forms.Button btModificarCli;
         private System.Windows.Forms.Button btEliminarCli;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox tModifiCompanyia;
+        private System.Windows.Forms.TextBox tModifiPais;
+        private System.Windows.Forms.TextBox tModifiCiutat;
+        private System.Windows.Forms.TextBox tModifiAdreça;
+        private System.Windows.Forms.TextBox tModifiNom;
     }
 }

@@ -48,9 +48,41 @@ namespace _20230503_Northwind.Controlador
             SqlCommand comando = new SqlCommand(delete, conection);
             nRows = comando.ExecuteNonQuery();
             return nRows;
-
-
-
+        }
+        public int modifiClient(string id, string mNom, string mAdreça, string mCiutat, string mPais, string mCompany)
+        {
+            int nRows=0;
+            if(!mNom.Equals(""))
+            {
+                string update = $"UPDATE Customers SET ContactName= '{mNom}' where CustomerID = '{id}'";
+                SqlCommand comando = new SqlCommand(update, conection);
+                nRows = comando.ExecuteNonQuery();
+            }
+            if(!mAdreça.Equals(""))
+            {
+                string update = $"UPDATE Customers SET Address= '{mAdreça}' where CustomerID = '{id}'";
+                SqlCommand comando = new SqlCommand(update, conection);
+                nRows = comando.ExecuteNonQuery();
+            }
+            if(!mCiutat.Equals(""))
+            {
+                string update = $"UPDATE Customers SET City= '{mCiutat}' where CustomerID = '{id}'";
+                SqlCommand comando = new SqlCommand(update, conection);
+                nRows = comando.ExecuteNonQuery();
+            }
+            if(!mPais.Equals(""))
+            {
+                string update = $"UPDATE Customers SET Country= '{mPais}' where CustomerID = '{id}'";
+                SqlCommand comando = new SqlCommand(update, conection);
+                nRows = comando.ExecuteNonQuery();
+            }
+            if(!mCompany.Equals(""))
+            {
+                string update = $"UPDATE Customers SET CompanyName= '{mCompany}' where CustomerID = '{id}'";
+                SqlCommand comando = new SqlCommand(update, conection);
+                nRows = comando.ExecuteNonQuery();
+            }
+            return nRows;          
         }
     }
 }

@@ -86,6 +86,7 @@
             this.botoComandes.TabIndex = 3;
             this.botoComandes.Text = "Gestió Comandes";
             this.botoComandes.UseVisualStyleBackColor = true;
+            this.botoComandes.Click += new System.EventHandler(this.botoComandes_Click);
             // 
             // botoConsultaCli
             // 

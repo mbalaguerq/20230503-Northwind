@@ -74,5 +74,40 @@ namespace _20230503_Northwind.Controlador
             adapter.Fill(dsN.Categories);
             return dsN;
         }
+        public int modifiClient(int id, string mNom, int mdistri, int mCateg, int mQuantitat, decimal mPreu)
+        {
+            int nRows = 0;
+            if(!mNom.Equals(""))
+            {
+                string update = $"UPDATE Products SET ProductName= '{mNom}' where ProductID = {id}";
+                SqlCommand comando = new SqlCommand(update, conection);
+                nRows = comando.ExecuteNonQuery();
+            }
+            if(mdistri != 0)
+            {
+                string update = $"UPDATE Products SET SupplierID= {mdistri} where ProductID = {id}";
+                SqlCommand comando = new SqlCommand(update, conection);
+                nRows = comando.ExecuteNonQuery();
+            }
+            if(mCateg !=0)
+            {
+                string update = $"UPDATE Products SET CategoryID= {mCateg} where ProductID = {id}";
+                SqlCommand comando = new SqlCommand(update, conection);
+                nRows = comando.ExecuteNonQuery();
+            }
+            if(!mQuantitat.Equals(""))
+            {
+                string update = $"UPDATE Products SET QuantityPerUnit= {mQuantitat} where ProductID = {id}";
+                SqlCommand comando = new SqlCommand(update, conection);
+                nRows = comando.ExecuteNonQuery();
+            }
+            if(!mPreu.Equals(""))
+            {
+                string update = $"UPDATE Products SET UnitPrice= {mPreu} where ProductID = {id}";
+                SqlCommand comando = new SqlCommand(update, conection);
+                nRows = comando.ExecuteNonQuery();
+            }
+            return nRows;
+        }
     }
 }

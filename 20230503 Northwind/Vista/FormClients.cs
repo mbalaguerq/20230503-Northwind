@@ -42,10 +42,11 @@ namespace _20230503_Northwind
                 this.btCancelar.Visible = true;
                 this.lcCompanyia2.Visible = true;
                 this.textBoxCompany.Visible = true;
+                this.textBoxNombre.Visible = true;
             }
             else
             {
-                this.textBoxCustomer.Text = ds.Customers[0].CustomerID;                
+                this.textBoxCustomer.Text = ds.Customers[0].CustomerID;
                 this.lbclient.Visible = true;
                 this.LbCompanyia.Visible = true;
                 this.textBoxNombre.Text = ds.Customers[0].ContactName;
@@ -53,7 +54,7 @@ namespace _20230503_Northwind
                 this.textBoxCiudad.Text = ds.Customers[0].City;
                 this.textBoxPais.Text = ds.Customers[0].Country;
                 this.btModificarCli.Visible = true;
-                this.btEliminarCli.Visible = true;                
+                this.btEliminarCli.Visible = true;
                 this.textBoxCompany.Visible = true;
                 this.textBoxCompany.Text = ds.Customers[0].CompanyName;
             }
@@ -93,8 +94,9 @@ namespace _20230503_Northwind
                 this.btModificarCli.Visible = false;
                 this.btAlta.Visible = false;
                 this.btCancelar.Visible = true;
+                this.btconsultar.Visible = false;
             }
-            if(opcio ==4)
+            if (opcio == 4)
             {
                 this.textBoxCompany.Visible = false;
                 this.LbCompanyia.Visible = false;
@@ -105,8 +107,14 @@ namespace _20230503_Northwind
                 this.btModificarCli.Visible = true;
                 this.btAlta.Visible = false;
                 this.btCancelar.Visible = true;
+                this.textBoxCompany.Visible = true;
+                this.LbCompanyia.Visible = true;
+                this.btEliminarCli.Enabled = false;
+                this.btAlta.Enabled = false;
+                this.btEsborrar.Enabled = true;
+                this.panel1.Visible = true;
+                MessageBox.Show("Introdueix els camps a modificar");
             }
-
         }
         private void btAlta_Click(object sender, EventArgs e)
         {
@@ -131,7 +139,7 @@ namespace _20230503_Northwind
                     DialogResult result;
                     result = MessageBox.Show(message, caption, buttons);
                     if (result == System.Windows.Forms.DialogResult.Yes)
-                    {                       
+                    {
                         nRows = clientController.altaClient(customer, nombre, direccion, ciudad, pais, company);
 
                         if (nRows > 0)
@@ -161,8 +169,8 @@ namespace _20230503_Northwind
                 MessageBox.Show(ex.Message);
             }
 
-            this.btAlta.Visible = false;
-            this.btCancelar.Visible = false;
+            //this.btAlta.Visible = false;
+            //this.btCancelar.Visible = false;
         }
         private void btEliminarCli_Click(object sender, EventArgs e)
         {
@@ -172,15 +180,29 @@ namespace _20230503_Northwind
                 this.LbCompanyia.Visible = true;
 
                 int nRows;
-                if (!this.textBoxCustomer.Text.Equals("") && !this.textBoxNombre.Text.Equals(""))
+                if (!this.textBoxCustomer.Text.Equals(""))
                 {
-                    string client = this.textBoxNombre.Text;
+                    string client = this.textBoxCustomer.Text;
 
                     ds = clientController.consultaClients(client);
 
-
-
-
+                    if (ds.Customers.Rows.Count == 0)
+                    {
+                        MessageBox.Show("El cliente no existe");
+                    }
+                    else
+                    {
+                        this.textBoxCustomer.Text = ds.Customers[0].CustomerID;
+                        this.lbclient.Visible = true;
+                        this.LbCompanyia.Visible = true;
+                        this.textBoxNombre.Text = ds.Customers[0].ContactName;
+                        this.textBoxDireccion.Text = ds.Customers[0].Address;
+                        this.textBoxCiudad.Text = ds.Customers[0].City;
+                        this.textBoxPais.Text = ds.Customers[0].Country;
+                        this.btEliminarCli.Visible = true;
+                        this.textBoxCompany.Visible = true;
+                        this.textBoxCompany.Text = ds.Customers[0].CompanyName;
+                    }
                     string message = "Confirma que vol eliminar aquest client?";
                     string caption = "Eliminar Client";
                     MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -196,6 +218,7 @@ namespace _20230503_Northwind
                         {
                             MessageBox.Show("S'ha eliminat el client correctament");
                         }
+                        ds.Customers.Clear();
                         this.textBoxCustomer.Text = "";
                         this.textBoxNombre.Text = "";
                         this.textBoxDireccion.Text = "";
@@ -210,7 +233,7 @@ namespace _20230503_Northwind
                 else if (this.textBoxCustomer.Text.Equals("") || this.textBoxNombre.Text.Equals("")
                          || this.textBoxCompany.Text.Equals(""))
                 {
-                    MessageBox.Show("Els camps -ClientId, Nom i Companyia- són obligatoris");
+                    MessageBox.Show("El camp -ClientId- és obligatori");
                 }
             }
             catch (Exception ex)
@@ -227,6 +250,7 @@ namespace _20230503_Northwind
             this.textBoxPais.Text = "";
             this.lbclient.Visible = true;
             this.LbCompanyia.Visible = false;
+            this.textBoxCompany.Visible = false;
 
         }
         private void btCancelar_Click(object sender, EventArgs e)
@@ -235,10 +259,38 @@ namespace _20230503_Northwind
         }
         private void btModificarCli_Click(object sender, EventArgs e)
         {
-            this.btAlta.Enabled = false;
-            this.btEsborrar.Enabled = false;
+            int nRows;                       
+            string id = textBoxCustomer.Text;
+            string mNom = this.tModifiNom.Text;
+            string mAdreça = this.tModifiAdreça.Text;
+            string mCiutat = this.tModifiCiutat.Text;
+            string mPais = this.tModifiPais.Text;
+            string mCompany = this.textBoxCompany.Text;
+
+            nRows = clientController.modifiClient(id, mNom, mAdreça, mCiutat, mPais, mCompany);
+
+            if (nRows > 0)
+            {
+                MessageBox.Show("S'ha modificat el client correctament");
+            }
+            ds.Customers.Clear();
+            this.textBoxCustomer.Text = "";
+            this.textBoxNombre.Text = "";
+            this.textBoxDireccion.Text = "";
+            this.textBoxCiudad.Text = "";
+            this.textBoxPais.Text = "";
+            this.lbclient.Visible = true;
+            this.LbCompanyia.Visible = false;
+            this.lcCompanyia2.Visible = false;
+            this.textBoxCompany.Visible = false;
+            this.panel1.Visible = false;
         }
 
-
+        private void FormClients_MouseMove(object sender, MouseEventArgs e)
+        {
+          
+        }
     }
 }
+
+

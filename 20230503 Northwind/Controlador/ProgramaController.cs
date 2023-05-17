@@ -34,6 +34,14 @@ namespace _20230503_Northwind.Controlador
             FormProductes formProductes = new FormProductes(conection, producteController, ds, opcio);  
             formProductes.Show();
         }
+        public void menuComandes()
+        {
+            ComandaController comandaController = new ComandaController(conection, ds);
+            ClientController clientController = new ClientController(conection, ds);
+            ProducteController producteController = new ProducteController(conection, ds);
+            FormComandes formComandes = new FormComandes(conection, ds, comandaController, clientController, producteController);
+            formComandes.Show();
+        }
 
 
 

@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controlador\ClientController.cs" />
+    <Compile Include="Controlador\ComandaController.cs" />
     <Compile Include="Controlador\ProgramaController.cs" />
     <Compile Include="Controlador\ProducteController.cs" />
     <Compile Include="Model\DSNorthwind.Designer.cs">
@@ -68,6 +69,12 @@
     </Compile>
     <Compile Include="Vista\FormClients.Designer.cs">
       <DependentUpon>FormClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FormComandes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\FormComandes.Designer.cs">
+      <DependentUpon>FormComandes.cs</DependentUpon>
     </Compile>
     <Compile Include="Vista\FormProductes.cs">
       <SubType>Form</SubType>
