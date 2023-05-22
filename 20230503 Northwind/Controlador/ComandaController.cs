@@ -12,11 +12,39 @@ namespace _20230503_Northwind.Controlador
     {
         SqlConnection conection;
         DSNorthwind ds;
+        private static int _comanda= 1;
         public ComandaController(SqlConnection pconection, DSNorthwind pds) 
         {
             conection = pconection;
             ds = pds;
         }
+        public int getNumComanda()
+        {
+            _comanda++;
+            return _comanda;
+        }
+
+        public DSNorthwind getVenedor(int nVenedor)
+        {
+            string Employee = $"select * from Employees where EmployeeID = {nVenedor}";
+            SqlCommand comando = new SqlCommand(Employee, conection);
+            SqlDataAdapter adaptador = new SqlDataAdapter(comando);
+            DSNorthwind ds = new DSNorthwind();
+            adaptador.Fill(ds.Employees);
+            return ds;
+        }
+        DSNorthwind dsProdu = new DSNorthwind();
+        public DSNorthwind getProduByCodi( int producteID)
+        {
+            string produ = $"select * from Products where ProductID = {producteID}";
+            SqlCommand comando = new SqlCommand(produ, conection);
+            SqlDataAdapter adaptador = new SqlDataAdapter(comando);
+            
+            dsProdu.Products.Clear();
+            adaptador.Fill(dsProdu.Products);
+            return dsProdu;
+        }
+
 
     }
 }

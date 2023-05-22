@@ -21,7 +21,7 @@ namespace _20230503_Northwind.Vista
         ComandaController comandaController;
         ProducteController producteController;
         ClientController clientController;
-                
+        DsView dsfactura;
         public FormComandes(SqlConnection pconnection, DSNorthwind pds, object  pcomandaController, object pclientController, object pproducteController)
         {
             InitializeComponent();
@@ -30,7 +30,128 @@ namespace _20230503_Northwind.Vista
             comandaController = (ComandaController)pcomandaController;
             clientController =(ClientController) pclientController;
             producteController = (ProducteController)pproducteController;
+        }
 
+        private void textBoxNVenedor_MouseHover(object sender, EventArgs e)
+        {
+            this.textBoxNVenedor.BackColor = Color.Beige;
+        }
+        private void textBoxNVenedor_MouseLeave(object sender, EventArgs e)
+        {
+            this.textBoxNVenedor.BackColor = Color.White;
+        }
+        private void buttonAfegir_MouseHover(object sender, EventArgs e)
+        {
+            this.buttonAfegir.BackColor = SystemColors.Window;
+        }
+        private void buttonAfegir_MouseLeave(object sender, EventArgs e)
+        {
+            this.buttonAfegir.BackColor = Color.White;
+        }
+
+
+        private void FormComandes_Load(object sender, EventArgs e)
+        {
+            this.textBoxData.Text = DateTime.Now.ToShortDateString();
+            this.textNcomanda.Text = comandaController.getNumComanda().ToString();
+            this.textBoxNVenedor.Text = string.Empty;
+            dsfactura = new DsView();
+        }        
+        private void buttonBuscarVenedor_Click(object sender, EventArgs e)
+        {
+            string vene = this.textBoxNVenedor.Text;
+            if (Regex.IsMatch(vene, @"^\d+$")) 
+            {
+                int nVenedor = int.Parse(this.textBoxNVenedor.Text);
+                ds = comandaController.getVenedor(nVenedor);
+
+                if (ds.Employees.Rows.Count == 0)
+                {
+                    MessageBox.Show("No hi ha cap venedor amb aquest número");
+                    this.textBoxNVenedor.Text = string.Empty;
+                }
+                else
+                {
+                    this.textBoxVenedorNom.Text = ds.Employees[0].FirstName;
+                    this.textBoxVenedorCognom.Text = ds.Employees[0].LastName;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Número de venedor no vàlid");
+            }
+        }
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+            string produ = textBoxCodiProdu.Text;
+            if (Regex.IsMatch(produ, @"^\d+$"))
+            {
+                int producteID = int.Parse(textBoxCodiProdu.Text);
+                ds = comandaController.getProduByCodi(producteID);
+
+                if (ds.Products.Rows.Count == 0)
+                {
+                    MessageBox.Show("No hi ha cap producte amb aquest codi");
+                    textBoxCodiProdu.Text = string.Empty;
+                }
+                else
+                {
+                    this.textBoxDescripProdu.Text = ds.Products[0].ProductName;
+                    this.textBoxStock.Text = ds.Products[0].UnitsInStock.ToString();
+                    this.textBoxPreuUnit.Text = ds.Products[0].UnitPrice.ToString();
+
+                    cBoxUnitats.Items.Clear();
+                    int stockMax = int.Parse(textBoxStock.Text);
+                    for (int i = 1; i <= stockMax; i++)
+                    {
+                        cBoxUnitats.Items.Add(i.ToString());
+                    }
+
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("ID de producte no vàlid");
+            }
+
+        }
+        private void buttonAfegir_Click(object sender, EventArgs e)
+        {            
+
+            decimal preu = decimal.Parse(this.textBoxPreuUnit.Text);
+            int unitats = int.Parse(this.cBoxUnitats.SelectedItem.ToString());
+            int stock = int.Parse(textBoxStock.Text);
+
+            if (stock > 0)
+            {
+
+                DataRow row = dsfactura.DetallComandes.NewRow();
+                dsfactura.DetallComandes.Rows.InsertAt(row, 0);
+                dsfactura.DetallComandes[0].Codi = int.Parse(this.textBoxCodiProdu.Text);
+                dsfactura.DetallComandes[0].Descripció = this.textBoxDescripProdu.Text;
+                dsfactura.DetallComandes[0].PreuUnitat = decimal.Parse(this.textBoxPreuUnit.Text);
+                dsfactura.DetallComandes[0].Unitats = int.Parse(this.cBoxUnitats.SelectedItem.ToString());
+                dsfactura.DetallComandes[0].Total_ = (unitats * preu).ToString();
+
+                dataGridView1.DataSource = dsfactura.DetallComandes;
+            }
+            else
+            {
+                MessageBox.Show("No hi ha stock de l'article seleccionat");
+            }
+
+
+
+
+            //for(int i = 0; i < dsfactura.DetallComandes.Rows.Count; i++)
+            //{
+
+            //}
+
+        }
+        private void buttonEsborrar_Click(object sender, EventArgs e)
+        {
 
         }
     }

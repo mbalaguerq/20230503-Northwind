@@ -58,6 +58,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSNorthwind.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Model\DsView.cs">
+      <DependentUpon>DsView.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DsView.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsView.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +104,9 @@
     <EmbeddedResource Include="Vista\FormClients.resx">
       <DependentUpon>FormClients.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vista\FormComandes.resx">
+      <DependentUpon>FormComandes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vista\FormProductes.resx">
       <DependentUpon>FormProductes.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +133,17 @@
     </None>
     <None Include="Model\DSNorthwind.xss">
       <DependentUpon>DSNorthwind.xsd</DependentUpon>
+    </None>
+    <None Include="Model\DsView.xsc">
+      <DependentUpon>DsView.xsd</DependentUpon>
+    </None>
+    <None Include="Model\DsView.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsView.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Model\DsView.xss">
+      <DependentUpon>DsView.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

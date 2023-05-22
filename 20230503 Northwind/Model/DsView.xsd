@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsView" targetNamespace="http://tempuri.org/DsView.xsd" xmlns:mstns="http://tempuri.org/DsView.xsd" xmlns="http://tempuri.org/DsView.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsView" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="DsView" msprop:Generator_DataSetName="DsView">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DetallComandes" msprop:Generator_RowEvHandlerName="DetallComandesRowChangeEventHandler" msprop:Generator_RowDeletedName="DetallComandesRowDeleted" msprop:Generator_RowDeletingName="DetallComandesRowDeleting" msprop:Generator_RowEvArgName="DetallComandesRowChangeEvent" msprop:Generator_TablePropName="DetallComandes" msprop:Generator_RowChangedName="DetallComandesRowChanged" msprop:Generator_RowChangingName="DetallComandesRowChanging" msprop:Generator_TableClassName="DetallComandesDataTable" msprop:Generator_RowClassName="DetallComandesRow" msprop:Generator_TableVarName="tableDetallComandes" msprop:Generator_UserTableName="DetallComandes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Codi" msprop:Generator_ColumnPropNameInRow="Codi" msprop:Generator_ColumnPropNameInTable="CodiColumn" msprop:Generator_ColumnVarNameInTable="columnCodi" msprop:Generator_UserColumnName="Codi" type="xs:int" minOccurs="0" />
+              <xs:element name="Descripció" msprop:Generator_ColumnPropNameInRow="Descripció" msprop:Generator_ColumnPropNameInTable="DescripcióColumn" msprop:Generator_ColumnVarNameInTable="columnDescripció" msprop:Generator_UserColumnName="Descripció" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PreuUnitat" msprop:Generator_ColumnPropNameInRow="PreuUnitat" msprop:Generator_ColumnPropNameInTable="PreuUnitatColumn" msprop:Generator_ColumnVarNameInTable="columnPreuUnitat" msprop:Generator_UserColumnName="PreuUnitat" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Unitats" msprop:Generator_ColumnPropNameInRow="Unitats" msprop:Generator_ColumnPropNameInTable="UnitatsColumn" msprop:Generator_ColumnVarNameInTable="columnUnitats" msprop:Generator_UserColumnName="Unitats" type="xs:int" minOccurs="0" />
+              <xs:element name="Total_x0020_" msprop:Generator_ColumnPropNameInRow="Total_" msprop:Generator_ColumnPropNameInTable="Total_Column" msprop:Generator_ColumnVarNameInTable="columnTotal_" msprop:Generator_UserColumnName="Total " type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
