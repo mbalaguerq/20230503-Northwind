@@ -55,10 +55,16 @@
             this.textBoxCodiProdu = new System.Windows.Forms.TextBox();
             this.labelDescripció = new System.Windows.Forms.Label();
             this.labelCodiProducte = new System.Windows.Forms.Label();
+            this.textBoxPreuFinal = new System.Windows.Forms.TextBox();
+            this.labelTotal = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonFinalComanda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBoxNorthwind.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBoxBuscadorProd.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -194,13 +200,19 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FloralWhite;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 280);
+            this.dataGridView1.Location = new System.Drawing.Point(2, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(984, 164);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(558, 177);
             this.dataGridView1.TabIndex = 3;
             // 
             // groupBoxBuscadorProd
@@ -242,6 +254,7 @@
             // 
             // cBoxUnitats
             // 
+            this.cBoxUnitats.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBoxUnitats.FormattingEnabled = true;
             this.cBoxUnitats.Location = new System.Drawing.Point(136, 86);
             this.cBoxUnitats.Name = "cBoxUnitats";
@@ -261,6 +274,7 @@
             // textBoxStock
             // 
             this.textBoxStock.AcceptsReturn = true;
+            this.textBoxStock.Enabled = false;
             this.textBoxStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxStock.Location = new System.Drawing.Point(458, 56);
             this.textBoxStock.Name = "textBoxStock";
@@ -367,14 +381,68 @@
             this.labelCodiProducte.TabIndex = 0;
             this.labelCodiProducte.Text = "Codi Producte:";
             // 
+            // textBoxPreuFinal
+            // 
+            this.textBoxPreuFinal.AcceptsReturn = true;
+            this.textBoxPreuFinal.Enabled = false;
+            this.textBoxPreuFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPreuFinal.Location = new System.Drawing.Point(434, 186);
+            this.textBoxPreuFinal.Name = "textBoxPreuFinal";
+            this.textBoxPreuFinal.Size = new System.Drawing.Size(100, 26);
+            this.textBoxPreuFinal.TabIndex = 16;
+            this.textBoxPreuFinal.TextChanged += new System.EventHandler(this.textBoxPreuFinal_TextChanged);
+            // 
+            // labelTotal
+            // 
+            this.labelTotal.AutoSize = true;
+            this.labelTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotal.Location = new System.Drawing.Point(359, 192);
+            this.labelTotal.Name = "labelTotal";
+            this.labelTotal.Size = new System.Drawing.Size(69, 16);
+            this.labelTotal.TabIndex = 16;
+            this.labelTotal.Text = "PVP Final:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(540, 190);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(18, 20);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "€";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.buttonFinalComanda);
+            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.labelTotal);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.textBoxPreuFinal);
+            this.panel1.Location = new System.Drawing.Point(12, 280);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(984, 214);
+            this.panel1.TabIndex = 17;
+            // 
+            // buttonFinalComanda
+            // 
+            this.buttonFinalComanda.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFinalComanda.Location = new System.Drawing.Point(594, 147);
+            this.buttonFinalComanda.Name = "buttonFinalComanda";
+            this.buttonFinalComanda.Size = new System.Drawing.Size(145, 33);
+            this.buttonFinalComanda.TabIndex = 16;
+            this.buttonFinalComanda.Text = "Finalitzar Comanda";
+            this.buttonFinalComanda.UseVisualStyleBackColor = true;
+            this.buttonFinalComanda.Click += new System.EventHandler(this.buttonFinalComanda_Click);
+            // 
             // FormComandes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(1168, 599);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBoxBuscadorProd);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBoxNorthwind);
             this.Controls.Add(this.pictureBox1);
             this.Name = "FormComandes";
@@ -386,6 +454,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBoxBuscadorProd.ResumeLayout(false);
             this.groupBoxBuscadorProd.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -419,5 +489,10 @@
         private System.Windows.Forms.Label labelCodiProducte;
         private System.Windows.Forms.Button buttonBuscarVenedor;
         private System.Windows.Forms.TextBox textBoxVenedorCognom;
+        private System.Windows.Forms.TextBox textBoxPreuFinal;
+        private System.Windows.Forms.Label labelTotal;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button buttonFinalComanda;
     }
 }

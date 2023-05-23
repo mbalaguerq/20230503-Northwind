@@ -107,25 +107,21 @@ namespace _20230503_Northwind.Vista
                         cBoxUnitats.Items.Add(i.ToString());
                     }
 
-                }
-                
+                }                
             }
             else
             {
                 MessageBox.Show("ID de producte no vàlid");
             }
-
         }
         private void buttonAfegir_Click(object sender, EventArgs e)
         {            
-
             decimal preu = decimal.Parse(this.textBoxPreuUnit.Text);
             int unitats = int.Parse(this.cBoxUnitats.SelectedItem.ToString());
             int stock = int.Parse(textBoxStock.Text);
 
             if (stock > 0)
             {
-
                 DataRow row = dsfactura.DetallComandes.NewRow();
                 dsfactura.DetallComandes.Rows.InsertAt(row, 0);
                 dsfactura.DetallComandes[0].Codi = int.Parse(this.textBoxCodiProdu.Text);
@@ -133,26 +129,41 @@ namespace _20230503_Northwind.Vista
                 dsfactura.DetallComandes[0].PreuUnitat = decimal.Parse(this.textBoxPreuUnit.Text);
                 dsfactura.DetallComandes[0].Unitats = int.Parse(this.cBoxUnitats.SelectedItem.ToString());
                 dsfactura.DetallComandes[0].Total_ = (unitats * preu).ToString();
+                dsfactura.DetallComandes[0].
 
-                dataGridView1.DataSource = dsfactura.DetallComandes;
+                decimal preuFinal = 0;
+                decimal preuLinea = 0;
+
+                for (int i=0; i<dsfactura.DetallComandes.Rows.Count; i++)
+                {
+                    preuLinea = decimal.Parse(dsfactura.DetallComandes[i].Total_);
+
+                    preuFinal += preuLinea;
+                }
+                this.textBoxPreuFinal.Text = preuFinal.ToString();
+
+                    dataGridView1.DataSource = dsfactura.DetallComandes;
             }
             else
             {
                 MessageBox.Show("No hi ha stock de l'article seleccionat");
-            }
-
-
-
-
-            //for(int i = 0; i < dsfactura.DetallComandes.Rows.Count; i++)
-            //{
-
-            //}
-
+            }            
         }
         private void buttonEsborrar_Click(object sender, EventArgs e)
         {
+            this.textBoxCodiProdu.Text = String.Empty;
+            this.textBoxDescripProdu.Text = String.Empty;
+            this.textBoxPreuUnit.Text = String.Empty;
+            this.textBoxStock.Text = String.Empty;
+            this.cBoxUnitats.SelectedItem = null;
+        }
+        private void textBoxPreuFinal_TextChanged(object sender, EventArgs e)
+        {
 
+        }
+        private void buttonFinalComanda_Click(object sender, EventArgs e)
+        {
+            comandaController.finalComanda(dsfactura);
         }
     }
 }

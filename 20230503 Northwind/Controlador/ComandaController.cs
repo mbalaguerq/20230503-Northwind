@@ -44,7 +44,20 @@ namespace _20230503_Northwind.Controlador
             adaptador.Fill(dsProdu.Products);
             return dsProdu;
         }
+        public void finalComanda(DsView dsfactura)
+        {
+            int stock = 0;
+            int nRows = 0;
+            string update = $"UPDATE Products SET UnitsInStock= '{stock}' where CustomerID = {dsfactura.DetallComandes[i].Codi}";
+            
 
+
+            for (int i = 0; i < dsfactura.DetallComandes.Rows.Count; i++)
+            {
+                SqlCommand comando = new SqlCommand(update, conection);
+                nRows = comando.ExecuteNonQuery();
+            }
+        }
 
     }
 }
