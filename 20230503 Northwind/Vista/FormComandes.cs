@@ -22,13 +22,13 @@ namespace _20230503_Northwind.Vista
         ProducteController producteController;
         ClientController clientController;
         DsView dsfactura;
-        public FormComandes(SqlConnection pconnection, DSNorthwind pds, object  pcomandaController, object pclientController, object pproducteController)
+        public FormComandes(SqlConnection pconnection, DSNorthwind pds, object pcomandaController, object pclientController, object pproducteController)
         {
             InitializeComponent();
             connection = pconnection;
             ds = pds;
             comandaController = (ComandaController)pcomandaController;
-            clientController =(ClientController) pclientController;
+            clientController = (ClientController)pclientController;
             producteController = (ProducteController)pproducteController;
         }
 
@@ -52,15 +52,14 @@ namespace _20230503_Northwind.Vista
 
         private void FormComandes_Load(object sender, EventArgs e)
         {
-            this.textBoxData.Text = DateTime.Now.ToShortDateString();
-            this.textNcomanda.Text = comandaController.getNumComanda().ToString();
+            this.textBoxData.Text = DateTime.Now.ToShortDateString();            
             this.textBoxNVenedor.Text = string.Empty;
             dsfactura = new DsView();
-        }        
+        }
         private void buttonBuscarVenedor_Click(object sender, EventArgs e)
         {
             string vene = this.textBoxNVenedor.Text;
-            if (Regex.IsMatch(vene, @"^\d+$")) 
+            if (Regex.IsMatch(vene, @"^\d+$"))
             {
                 int nVenedor = int.Parse(this.textBoxNVenedor.Text);
                 ds = comandaController.getVenedor(nVenedor);
@@ -86,6 +85,7 @@ namespace _20230503_Northwind.Vista
             string produ = textBoxCodiProdu.Text;
             if (Regex.IsMatch(produ, @"^\d+$"))
             {
+                ds.Clear();
                 int producteID = int.Parse(textBoxCodiProdu.Text);
                 ds = comandaController.getProduByCodi(producteID);
 
@@ -98,16 +98,14 @@ namespace _20230503_Northwind.Vista
                 {
                     this.textBoxDescripProdu.Text = ds.Products[0].ProductName;
                     this.textBoxStock.Text = ds.Products[0].UnitsInStock.ToString();
-                    this.textBoxPreuUnit.Text = ds.Products[0].UnitPrice.ToString();
-
+                    this.textBoxPreuUnit.Text = ds.Products[0].UnitPrice.ToString();                   
                     cBoxUnitats.Items.Clear();
                     int stockMax = int.Parse(textBoxStock.Text);
                     for (int i = 1; i <= stockMax; i++)
                     {
                         cBoxUnitats.Items.Add(i.ToString());
                     }
-
-                }                
+                }
             }
             else
             {
@@ -129,12 +127,13 @@ namespace _20230503_Northwind.Vista
                 dsfactura.DetallComandes[0].PreuUnitat = decimal.Parse(this.textBoxPreuUnit.Text);
                 dsfactura.DetallComandes[0].Unitats = int.Parse(this.cBoxUnitats.SelectedItem.ToString());
                 dsfactura.DetallComandes[0].Total_ = (unitats * preu).ToString();
-                dsfactura.DetallComandes[0].
+                dsfactura.DetallComandes[0].Stock = int.Parse(this.textBoxStock.Text);
+                dsfactura.DetallComandes[0].Venedor = int.Parse(this.textBoxNVenedor.Text);
 
                 decimal preuFinal = 0;
                 decimal preuLinea = 0;
 
-                for (int i=0; i<dsfactura.DetallComandes.Rows.Count; i++)
+                for (int i = 0; i < dsfactura.DetallComandes.Rows.Count; i++)
                 {
                     preuLinea = decimal.Parse(dsfactura.DetallComandes[i].Total_);
 
@@ -142,12 +141,18 @@ namespace _20230503_Northwind.Vista
                 }
                 this.textBoxPreuFinal.Text = preuFinal.ToString();
 
-                    dataGridView1.DataSource = dsfactura.DetallComandes;
+                dataGridView1.DataSource = dsfactura.DetallComandes;
+
+                this.textBoxCodiProdu.Text = String.Empty;
+                this.textBoxDescripProdu.Text = String.Empty;
+                this.textBoxPreuUnit.Text = String.Empty;
+                this.textBoxStock.Text = String.Empty;
+                this.cBoxUnitats.SelectedItem = null;
             }
             else
             {
                 MessageBox.Show("No hi ha stock de l'article seleccionat");
-            }            
+            }
         }
         private void buttonEsborrar_Click(object sender, EventArgs e)
         {
@@ -163,7 +168,28 @@ namespace _20230503_Northwind.Vista
         }
         private void buttonFinalComanda_Click(object sender, EventArgs e)
         {
-            comandaController.finalComanda(dsfactura);
+            int orderID = comandaController.CreateOrder(dsfactura);
+            int nFilas =comandaController.CreateOrderDetail(dsfactura, orderID);
+
+            if (nFilas > 0)
+            {
+                int nRows = comandaController.actualitzaStock(dsfactura);
+                if (nRows > 0)
+                {
+                    this.textBoxCodiProdu.Text = String.Empty;
+                    this.textBoxDescripProdu.Text = String.Empty;
+                    this.textBoxPreuUnit.Text = String.Empty;
+                    this.textBoxStock.Text = String.Empty;
+                    this.cBoxUnitats.SelectedItem = null;
+                    this.textBoxNVenedor.Text = String.Empty;
+                    this.textBoxPreuFinal.Text = String.Empty;
+                    dsfactura.Clear();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error al processar la comanda");
+            }
         }
     }
 }

@@ -12,8 +12,8 @@ namespace _20230503_Northwind.Controlador
     {
         SqlConnection conection;
         DSNorthwind ds;
-        private static int _comanda= 1;
-        public ComandaController(SqlConnection pconection, DSNorthwind pds) 
+        private static int _comanda = 1;
+        public ComandaController(SqlConnection pconection, DSNorthwind pds)
         {
             conection = pconection;
             ds = pds;
@@ -34,30 +34,67 @@ namespace _20230503_Northwind.Controlador
             return ds;
         }
         DSNorthwind dsProdu = new DSNorthwind();
-        public DSNorthwind getProduByCodi( int producteID)
+        public DSNorthwind getProduByCodi(int producteID)
         {
             string produ = $"select * from Products where ProductID = {producteID}";
             SqlCommand comando = new SqlCommand(produ, conection);
             SqlDataAdapter adaptador = new SqlDataAdapter(comando);
-            
+
             dsProdu.Products.Clear();
             adaptador.Fill(dsProdu.Products);
             return dsProdu;
         }
-        public void finalComanda(DsView dsfactura)
+        public int CreateOrder(DsView dsfactura)
         {
-            int stock = 0;
             int nRows = 0;
-            string update = $"UPDATE Products SET UnitsInStock= '{stock}' where CustomerID = {dsfactura.DetallComandes[i].Codi}";
-            
+            int venedor = dsfactura.DetallComandes[0].Venedor;
+            int orderID = 0;
 
+            string insert = $"INSERT into Orders (EmployeeID) VALUES({venedor})";
+            SqlCommand command = new SqlCommand(insert, conection);
+            nRows = command.ExecuteNonQuery();
+
+            string newOrder = $"SELECT max(OrderID) from Orders";
+            SqlCommand command2 = new SqlCommand(newOrder, conection);            
+            SqlDataReader idNewOrder = command2.ExecuteReader();
+            idNewOrder.Read();
+            orderID = idNewOrder.GetInt32(0);
+            idNewOrder.Close();
+            return orderID;
+        }
+        public int CreateOrderDetail(DsView dsfactura, int orderID)
+        { 
+            int nRows = 0;
+            for (int i = 0; i < dsfactura.DetallComandes.Rows.Count; i++)
+            {
+                int productID = dsfactura.DetallComandes[i].Codi;
+                decimal unitPrice = dsfactura.DetallComandes[i].PreuUnitat;
+                int quantity = dsfactura.DetallComandes[i].Unitats;
+                
+                string detallComanda = $"INSERT into [Order Details] (OrderID,ProductID,UnitPrice,Quantity) VALUES (";
+                detallComanda += $"{orderID},{productID},{unitPrice},{quantity});";
+                SqlCommand command3 = new SqlCommand(detallComanda, conection);
+                nRows = command3.ExecuteNonQuery();
+                return nRows;
+            }
+            return nRows;
+        }
+        public int actualitzaStock(DsView dsfactura)//actualitza l'stock.
+        {
+            int nRows = 0;
 
             for (int i = 0; i < dsfactura.DetallComandes.Rows.Count; i++)
             {
+                int stock = (dsfactura.DetallComandes[i].Stock - dsfactura.DetallComandes[i].Unitats);
+                string update = $"UPDATE Products SET UnitsInStock= '{stock}' where ProductID = {dsfactura.DetallComandes[i].Codi}";
                 SqlCommand comando = new SqlCommand(update, conection);
                 nRows = comando.ExecuteNonQuery();
+
+                return nRows;
             }
+            return nRows;
         }
+
 
     }
 }

@@ -291,6 +291,8 @@ namespace _20230503_Northwind.Model {
             
             private global::System.Data.DataColumn columnStock;
             
+            private global::System.Data.DataColumn columnVenedor;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DetallComandesDataTable() {
@@ -374,6 +376,14 @@ namespace _20230503_Northwind.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn VenedorColumn {
+                get {
+                    return this.columnVenedor;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -409,7 +419,7 @@ namespace _20230503_Northwind.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DetallComandesRow AddDetallComandesRow(int Codi, string Descripció, decimal PreuUnitat, int Unitats, string Total_, int Stock) {
+            public DetallComandesRow AddDetallComandesRow(int Codi, string Descripció, decimal PreuUnitat, int Unitats, string Total_, int Stock, int Venedor) {
                 DetallComandesRow rowDetallComandesRow = ((DetallComandesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Codi,
@@ -417,7 +427,8 @@ namespace _20230503_Northwind.Model {
                         PreuUnitat,
                         Unitats,
                         Total_,
-                        Stock};
+                        Stock,
+                        Venedor};
                 rowDetallComandesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDetallComandesRow);
                 return rowDetallComandesRow;
@@ -446,6 +457,7 @@ namespace _20230503_Northwind.Model {
                 this.columnUnitats = base.Columns["Unitats"];
                 this.columnTotal_ = base.Columns["Total "];
                 this.columnStock = base.Columns["Stock"];
+                this.columnVenedor = base.Columns["Venedor"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -463,6 +475,8 @@ namespace _20230503_Northwind.Model {
                 base.Columns.Add(this.columnTotal_);
                 this.columnStock = new global::System.Data.DataColumn("Stock", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStock);
+                this.columnVenedor = new global::System.Data.DataColumn("Venedor", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVenedor);
                 this.columnDescripció.MaxLength = 40;
             }
             
@@ -702,6 +716,22 @@ namespace _20230503_Northwind.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int Venedor {
+                get {
+                    try {
+                        return ((int)(this[this.tableDetallComandes.VenedorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Venedor\' de la tabla \'DetallComandes\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDetallComandes.VenedorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCodiNull() {
                 return this.IsNull(this.tableDetallComandes.CodiColumn);
             }
@@ -770,6 +800,18 @@ namespace _20230503_Northwind.Model {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetStockNull() {
                 this[this.tableDetallComandes.StockColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsVenedorNull() {
+                return this.IsNull(this.tableDetallComandes.VenedorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetVenedorNull() {
+                this[this.tableDetallComandes.VenedorColumn] = global::System.Convert.DBNull;
             }
         }
         

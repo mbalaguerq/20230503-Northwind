@@ -12,21 +12,22 @@
   <xs:element name="DsView" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DsView" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DsView">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DetallComandes" msprop:Generator_RowClassName="DetallComandesRow" msprop:Generator_RowEvHandlerName="DetallComandesRowChangeEventHandler" msprop:Generator_RowDeletedName="DetallComandesRowDeleted" msprop:Generator_RowDeletingName="DetallComandesRowDeleting" msprop:Generator_RowEvArgName="DetallComandesRowChangeEvent" msprop:Generator_TablePropName="DetallComandes" msprop:Generator_RowChangedName="DetallComandesRowChanged" msprop:Generator_UserTableName="DetallComandes" msprop:Generator_RowChangingName="DetallComandesRowChanging" msprop:Generator_TableClassName="DetallComandesDataTable" msprop:Generator_TableVarName="tableDetallComandes">
+        <xs:element name="DetallComandes" msprop:Generator_RowEvHandlerName="DetallComandesRowChangeEventHandler" msprop:Generator_RowDeletedName="DetallComandesRowDeleted" msprop:Generator_RowDeletingName="DetallComandesRowDeleting" msprop:Generator_RowEvArgName="DetallComandesRowChangeEvent" msprop:Generator_TablePropName="DetallComandes" msprop:Generator_RowChangedName="DetallComandesRowChanged" msprop:Generator_UserTableName="DetallComandes" msprop:Generator_RowChangingName="DetallComandesRowChanging" msprop:Generator_RowClassName="DetallComandesRow" msprop:Generator_TableClassName="DetallComandesDataTable" msprop:Generator_TableVarName="tableDetallComandes">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Codi" msprop:Generator_UserColumnName="Codi" msprop:Generator_ColumnPropNameInTable="CodiColumn" msprop:Generator_ColumnPropNameInRow="Codi" msprop:Generator_ColumnVarNameInTable="columnCodi" type="xs:int" minOccurs="0" />
-              <xs:element name="Descripció" msprop:Generator_UserColumnName="Descripció" msprop:Generator_ColumnPropNameInTable="DescripcióColumn" msprop:Generator_ColumnPropNameInRow="Descripció" msprop:Generator_ColumnVarNameInTable="columnDescripció" minOccurs="0">
+              <xs:element name="Codi" msprop:Generator_ColumnPropNameInTable="CodiColumn" msprop:Generator_ColumnPropNameInRow="Codi" msprop:Generator_UserColumnName="Codi" msprop:Generator_ColumnVarNameInTable="columnCodi" type="xs:int" minOccurs="0" />
+              <xs:element name="Descripció" msprop:Generator_ColumnPropNameInTable="DescripcióColumn" msprop:Generator_ColumnPropNameInRow="Descripció" msprop:Generator_UserColumnName="Descripció" msprop:Generator_ColumnVarNameInTable="columnDescripció" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="40" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="PreuUnitat" msprop:Generator_UserColumnName="PreuUnitat" msprop:Generator_ColumnPropNameInTable="PreuUnitatColumn" msprop:Generator_ColumnPropNameInRow="PreuUnitat" msprop:Generator_ColumnVarNameInTable="columnPreuUnitat" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Unitats" msprop:Generator_UserColumnName="Unitats" msprop:Generator_ColumnPropNameInTable="UnitatsColumn" msprop:Generator_ColumnPropNameInRow="Unitats" msprop:Generator_ColumnVarNameInTable="columnUnitats" type="xs:int" minOccurs="0" />
-              <xs:element name="Total_x0020_" msprop:Generator_UserColumnName="Total " msprop:Generator_ColumnPropNameInTable="Total_Column" msprop:Generator_ColumnPropNameInRow="Total_" msprop:Generator_ColumnVarNameInTable="columnTotal_" type="xs:string" minOccurs="0" />
-              <xs:element name="Stock" msprop:Generator_ColumnPropNameInRow="Stock" msprop:Generator_ColumnPropNameInTable="StockColumn" msprop:Generator_ColumnVarNameInTable="columnStock" msprop:Generator_UserColumnName="Stock" type="xs:int" minOccurs="0" />
+              <xs:element name="PreuUnitat" msprop:Generator_ColumnPropNameInTable="PreuUnitatColumn" msprop:Generator_ColumnPropNameInRow="PreuUnitat" msprop:Generator_UserColumnName="PreuUnitat" msprop:Generator_ColumnVarNameInTable="columnPreuUnitat" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Unitats" msprop:Generator_ColumnPropNameInTable="UnitatsColumn" msprop:Generator_ColumnPropNameInRow="Unitats" msprop:Generator_UserColumnName="Unitats" msprop:Generator_ColumnVarNameInTable="columnUnitats" type="xs:int" minOccurs="0" />
+              <xs:element name="Total_x0020_" msprop:Generator_ColumnPropNameInTable="Total_Column" msprop:Generator_ColumnPropNameInRow="Total_" msprop:Generator_UserColumnName="Total " msprop:Generator_ColumnVarNameInTable="columnTotal_" type="xs:string" minOccurs="0" />
+              <xs:element name="Stock" msprop:Generator_UserColumnName="Stock" msprop:Generator_ColumnPropNameInTable="StockColumn" msprop:Generator_ColumnPropNameInRow="Stock" msprop:Generator_ColumnVarNameInTable="columnStock" type="xs:int" minOccurs="0" />
+              <xs:element name="Venedor" msprop:Generator_ColumnPropNameInRow="Venedor" msprop:Generator_ColumnPropNameInTable="VenedorColumn" msprop:Generator_ColumnVarNameInTable="columnVenedor" msprop:Generator_UserColumnName="Venedor" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
