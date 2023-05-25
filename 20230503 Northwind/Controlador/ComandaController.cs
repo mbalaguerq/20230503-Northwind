@@ -56,11 +56,10 @@ namespace _20230503_Northwind.Controlador
 
             string newOrder = $"SELECT max(OrderID) from Orders";
             SqlCommand command2 = new SqlCommand(newOrder, conection);            
-            SqlDataReader idNewOrder = command2.ExecuteReader();
-            idNewOrder.Read();
-            orderID = idNewOrder.GetInt32(0);
-            idNewOrder.Close();
-            return orderID;
+            int idNewOrder = Convert.ToInt32(command2.ExecuteScalar());
+            //retorna el valor pel que has preguntat a la BBDD.
+            //Només vàlid per un sol valor.
+            return idNewOrder;
         }
         public int CreateOrderDetail(DsView dsfactura, int orderID)
         { 
@@ -72,7 +71,7 @@ namespace _20230503_Northwind.Controlador
                 int quantity = dsfactura.DetallComandes[i].Unitats;
                 
                 string detallComanda = $"INSERT into [Order Details] (OrderID,ProductID,UnitPrice,Quantity) VALUES (";
-                detallComanda += $"{orderID},{productID},{unitPrice},{quantity});";
+                detallComanda += $"{orderID},{productID},{unitPrice.ToString().Replace(",",".")},{quantity});";
                 SqlCommand command3 = new SqlCommand(detallComanda, conection);
                 nRows = command3.ExecuteNonQuery();
                 return nRows;
