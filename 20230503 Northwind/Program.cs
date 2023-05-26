@@ -17,20 +17,9 @@ namespace _20230503_Northwind
         [STAThread]
         static void Main()
         {
-            //Creem un string per connectar a BBDD (nom cadena de conexió a servidor)
-            string conexionBaseDatos = "Data Source=DESKTOP-N4T4UJL\\SQLEXPRESS;Initial Catalog=Northwind;Integrated Security=True";
-            
-            SqlConnection conexion = new SqlConnection(conexionBaseDatos);
-            conexion.Open();
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
             DSNorthwind ds = new DSNorthwind();
-            ProgramaController controller = new ProgramaController(conexion,ds);
+            ProgramaController controller = new ProgramaController(ds);
 
-            //instrucció per conectar a BBDD            
-            //Application.Run(new ProgramaController(conexion));
         }
     }
 }

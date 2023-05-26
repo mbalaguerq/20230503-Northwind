@@ -120,5 +120,10 @@ namespace _20230503_Northwind.Vista
         {
             programaController.menuComandes();
         }
+
+        private void MenuView_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            programaController.cerrarForm();
+        }
     }
 }

@@ -14,13 +14,31 @@ namespace _20230503_Northwind.Controlador
 {
     internal class ProgramaController
     {
+        FormConexio formconexio;
         SqlConnection conection;
         DSNorthwind ds;
-        public ProgramaController(SqlConnection pconection, DSNorthwind pds)
+        string conexio = "";
+        public ProgramaController(DSNorthwind pds)
         {
             this.ds = pds;
-            this.conection = pconection;
-            Application.Run(new MenuView(conection, this, ds));
+            formconexio = new FormConexio(this);
+            Application.Run(formconexio);
+
+        }
+        public void crearConexion()
+        {
+            conection = new SqlConnection(conexio);
+            conection.Open();
+
+            
+
+            MenuView formMenu = new MenuView(conection,this, ds);
+            formMenu.Show();
+        }
+        public void setConexio(string cadena)
+        {
+            conexio = cadena;
+
         }
         public void menuClients(int opcio)
         {
@@ -41,6 +59,10 @@ namespace _20230503_Northwind.Controlador
             ProducteController producteController = new ProducteController(conection, ds);
             FormComandes formComandes = new FormComandes(conection, ds, comandaController, clientController, producteController);
             formComandes.Show();
+        }
+        public void cerrarForm()
+        {
+            formconexio.Dispose();
         }
 
 

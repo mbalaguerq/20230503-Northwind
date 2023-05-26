@@ -84,6 +84,12 @@
     <Compile Include="Vista\FormComandes.Designer.cs">
       <DependentUpon>FormComandes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vista\FormConexio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\FormConexio.Designer.cs">
+      <DependentUpon>FormConexio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista\FormProductes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\FormComandes.resx">
       <DependentUpon>FormComandes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\FormConexio.resx">
+      <DependentUpon>FormConexio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\FormProductes.resx">
       <DependentUpon>FormProductes.cs</DependentUpon>

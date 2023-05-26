@@ -47,9 +47,10 @@
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Image = global::_20230503_Northwind.Properties.Resources.northwind_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(18, 18);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(254, 149);
+            this.pictureBox1.Size = new System.Drawing.Size(381, 229);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -58,9 +59,10 @@
             // botoClients
             // 
             this.botoClients.Font = new System.Drawing.Font("Nachlieli CLM", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.botoClients.Location = new System.Drawing.Point(12, 196);
+            this.botoClients.Location = new System.Drawing.Point(18, 302);
+            this.botoClients.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.botoClients.Name = "botoClients";
-            this.botoClients.Size = new System.Drawing.Size(254, 45);
+            this.botoClients.Size = new System.Drawing.Size(381, 69);
             this.botoClients.TabIndex = 1;
             this.botoClients.Text = "Gestió Clients";
             this.botoClients.UseVisualStyleBackColor = true;
@@ -69,9 +71,10 @@
             // botoProductes
             // 
             this.botoProductes.Font = new System.Drawing.Font("Nachlieli CLM", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.botoProductes.Location = new System.Drawing.Point(12, 259);
+            this.botoProductes.Location = new System.Drawing.Point(18, 398);
+            this.botoProductes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.botoProductes.Name = "botoProductes";
-            this.botoProductes.Size = new System.Drawing.Size(254, 45);
+            this.botoProductes.Size = new System.Drawing.Size(381, 69);
             this.botoProductes.TabIndex = 2;
             this.botoProductes.Text = "Gestió Productes";
             this.botoProductes.UseVisualStyleBackColor = true;
@@ -80,9 +83,10 @@
             // botoComandes
             // 
             this.botoComandes.Font = new System.Drawing.Font("Nachlieli CLM", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.botoComandes.Location = new System.Drawing.Point(12, 319);
+            this.botoComandes.Location = new System.Drawing.Point(18, 491);
+            this.botoComandes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.botoComandes.Name = "botoComandes";
-            this.botoComandes.Size = new System.Drawing.Size(254, 45);
+            this.botoComandes.Size = new System.Drawing.Size(381, 69);
             this.botoComandes.TabIndex = 3;
             this.botoComandes.Text = "Gestió Comandes";
             this.botoComandes.UseVisualStyleBackColor = true;
@@ -91,9 +95,10 @@
             // botoConsultaCli
             // 
             this.botoConsultaCli.Font = new System.Drawing.Font("Nachlieli CLM", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.botoConsultaCli.Location = new System.Drawing.Point(365, 147);
+            this.botoConsultaCli.Location = new System.Drawing.Point(548, 226);
+            this.botoConsultaCli.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.botoConsultaCli.Name = "botoConsultaCli";
-            this.botoConsultaCli.Size = new System.Drawing.Size(254, 45);
+            this.botoConsultaCli.Size = new System.Drawing.Size(381, 69);
             this.botoConsultaCli.TabIndex = 4;
             this.botoConsultaCli.Text = "Consultar Client";
             this.botoConsultaCli.UseVisualStyleBackColor = true;
@@ -102,9 +107,10 @@
             // botoAltaCli
             // 
             this.botoAltaCli.Font = new System.Drawing.Font("Nachlieli CLM", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.botoAltaCli.Location = new System.Drawing.Point(365, 215);
+            this.botoAltaCli.Location = new System.Drawing.Point(548, 331);
+            this.botoAltaCli.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.botoAltaCli.Name = "botoAltaCli";
-            this.botoAltaCli.Size = new System.Drawing.Size(254, 45);
+            this.botoAltaCli.Size = new System.Drawing.Size(381, 69);
             this.botoAltaCli.TabIndex = 5;
             this.botoAltaCli.Text = "Alta Nou Client";
             this.botoAltaCli.UseVisualStyleBackColor = true;
@@ -113,9 +119,10 @@
             // botoDeleteCli
             // 
             this.botoDeleteCli.Font = new System.Drawing.Font("Nachlieli CLM", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.botoDeleteCli.Location = new System.Drawing.Point(365, 284);
+            this.botoDeleteCli.Location = new System.Drawing.Point(548, 437);
+            this.botoDeleteCli.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.botoDeleteCli.Name = "botoDeleteCli";
-            this.botoDeleteCli.Size = new System.Drawing.Size(254, 45);
+            this.botoDeleteCli.Size = new System.Drawing.Size(381, 69);
             this.botoDeleteCli.TabIndex = 6;
             this.botoDeleteCli.Text = "Eliminar Client";
             this.botoDeleteCli.UseVisualStyleBackColor = true;
@@ -124,9 +131,10 @@
             // botoModifiCli
             // 
             this.botoModifiCli.Font = new System.Drawing.Font("Nachlieli CLM", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.botoModifiCli.Location = new System.Drawing.Point(365, 351);
+            this.botoModifiCli.Location = new System.Drawing.Point(548, 540);
+            this.botoModifiCli.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.botoModifiCli.Name = "botoModifiCli";
-            this.botoModifiCli.Size = new System.Drawing.Size(254, 45);
+            this.botoModifiCli.Size = new System.Drawing.Size(381, 69);
             this.botoModifiCli.TabIndex = 7;
             this.botoModifiCli.Text = "Modificar Client";
             this.botoModifiCli.UseVisualStyleBackColor = true;
@@ -135,9 +143,10 @@
             // botoConsultaProd
             // 
             this.botoConsultaProd.Font = new System.Drawing.Font("Nachlieli CLM", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.botoConsultaProd.Location = new System.Drawing.Point(365, 147);
+            this.botoConsultaProd.Location = new System.Drawing.Point(548, 226);
+            this.botoConsultaProd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.botoConsultaProd.Name = "botoConsultaProd";
-            this.botoConsultaProd.Size = new System.Drawing.Size(254, 45);
+            this.botoConsultaProd.Size = new System.Drawing.Size(381, 69);
             this.botoConsultaProd.TabIndex = 8;
             this.botoConsultaProd.Text = "Consultar Producte";
             this.botoConsultaProd.UseVisualStyleBackColor = true;
@@ -146,9 +155,10 @@
             // botoNouProd
             // 
             this.botoNouProd.Font = new System.Drawing.Font("Nachlieli CLM", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.botoNouProd.Location = new System.Drawing.Point(365, 215);
+            this.botoNouProd.Location = new System.Drawing.Point(548, 331);
+            this.botoNouProd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.botoNouProd.Name = "botoNouProd";
-            this.botoNouProd.Size = new System.Drawing.Size(254, 45);
+            this.botoNouProd.Size = new System.Drawing.Size(381, 69);
             this.botoNouProd.TabIndex = 9;
             this.botoNouProd.Text = "Alta Nou Producte";
             this.botoNouProd.UseVisualStyleBackColor = true;
@@ -157,9 +167,10 @@
             // botoElimiProd
             // 
             this.botoElimiProd.Font = new System.Drawing.Font("Nachlieli CLM", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.botoElimiProd.Location = new System.Drawing.Point(365, 284);
+            this.botoElimiProd.Location = new System.Drawing.Point(548, 437);
+            this.botoElimiProd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.botoElimiProd.Name = "botoElimiProd";
-            this.botoElimiProd.Size = new System.Drawing.Size(254, 45);
+            this.botoElimiProd.Size = new System.Drawing.Size(381, 69);
             this.botoElimiProd.TabIndex = 10;
             this.botoElimiProd.Text = "Eliminar Producte";
             this.botoElimiProd.UseVisualStyleBackColor = true;
@@ -168,9 +179,10 @@
             // botoModifiProd
             // 
             this.botoModifiProd.Font = new System.Drawing.Font("Nachlieli CLM", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.botoModifiProd.Location = new System.Drawing.Point(365, 351);
+            this.botoModifiProd.Location = new System.Drawing.Point(548, 540);
+            this.botoModifiProd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.botoModifiProd.Name = "botoModifiProd";
-            this.botoModifiProd.Size = new System.Drawing.Size(254, 45);
+            this.botoModifiProd.Size = new System.Drawing.Size(381, 69);
             this.botoModifiProd.TabIndex = 11;
             this.botoModifiProd.Text = "Modificar Producte";
             this.botoModifiProd.UseVisualStyleBackColor = true;
@@ -178,10 +190,10 @@
             // 
             // MenuView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.botoModifiProd);
             this.Controls.Add(this.botoElimiProd);
             this.Controls.Add(this.botoNouProd);
@@ -194,8 +206,10 @@
             this.Controls.Add(this.botoProductes);
             this.Controls.Add(this.botoClients);
             this.Controls.Add(this.pictureBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MenuView";
             this.Text = "MenuView";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuView_FormClosed);
             this.Load += new System.EventHandler(this.MenuView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
